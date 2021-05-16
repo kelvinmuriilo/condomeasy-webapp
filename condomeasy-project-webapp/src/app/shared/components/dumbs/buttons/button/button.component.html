@@ -1,1 +1,14 @@
-<p>button works!</p>
+<div class="d-grid gap-2">
+
+    <button 
+        type="button"
+        class="btn" 
+        [class]="className"
+        (click)="clickEvent()"
+        [id]="identifier">
+        
+        {{ name }}
+    </button>
+
+</div>
+
