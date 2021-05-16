@@ -1,0 +1,19 @@
+.logo {
+  width: 350px;
+  height: 400px;
+}
+
+.button-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.register-link {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.register-link:hover {
+  text-decoration: underline;
+}

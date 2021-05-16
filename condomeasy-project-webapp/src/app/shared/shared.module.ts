@@ -1,14 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent } from './components/dumbs/buttons/button/button.component';
+import { InputTextComponent } from './components/dumbs/input-text/input-text.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
+const COMPONENTS = [
+  ButtonComponent,
+  InputTextComponent
+];
 
 
 @NgModule({
-  declarations: [],
+  declarations: [    
+    ...COMPONENTS
+  ],
   imports: [
     CommonModule,
-    ButtonComponent
+    ReactiveFormsModule
+  ],
+  exports: [
+    ...COMPONENTS
   ]
 })
 export class SharedModule { }

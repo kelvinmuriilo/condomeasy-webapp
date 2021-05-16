@@ -6,14 +6,18 @@ import { AppComponent } from './app.component';
 
 /* Modules */
 import { SharedModule } from './shared/shared.module';
+import { LoginComponent } from './features/login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
