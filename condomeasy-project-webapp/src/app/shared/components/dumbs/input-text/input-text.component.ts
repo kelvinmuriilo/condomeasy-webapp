@@ -4,7 +4,7 @@ import { FormControl } from '@angular/forms';
 @Component({
   selector: 'app-input-text',
   templateUrl: './input-text.component.html',
-  styleUrls: ['./input-text.component.css']
+  styleUrls: ['./input-text.component.css'],
 })
 export class InputTextComponent implements OnInit {
   value: string;
@@ -17,10 +17,9 @@ export class InputTextComponent implements OnInit {
 
   @Output() changeValue: EventEmitter<string> = new EventEmitter<string>();
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   isInvalid(): boolean {
     return this.control.invalid && this.control.touched;
@@ -30,5 +29,4 @@ export class InputTextComponent implements OnInit {
     this.value = value;
     this.changeValue.emit(this.value);
   }
-
 }

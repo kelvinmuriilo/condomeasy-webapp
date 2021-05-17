@@ -17,13 +17,10 @@ import { HomeComponent } from './features/home/home.component';
 import { ToastrModule } from 'ngx-toastr';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing.module';
+import { SignupComponent } from './features/signup/signup.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    HomeComponent
-  ],
+  declarations: [AppComponent, LoginComponent, HomeComponent, SignupComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -33,15 +30,15 @@ import { AppRoutingModule } from './app.routing.module';
     ToastrModule.forRoot(),
     HttpClientModule,
     RouterModule.forRoot([]),
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
-      multi: true
-    }
+      multi: true,
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
