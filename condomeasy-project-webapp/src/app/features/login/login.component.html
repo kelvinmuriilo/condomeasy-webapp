@@ -1,22 +1,24 @@
 <div class="row">
     <div class="col-12 d-flex flex-column align-items-center">
 
-        <img class="logo mt-md-5"  src="../../../assets/logo-condomeasy.png" alt="logo-condomeasy">
+        <img class="logo"  src="../../../assets/logo-condomeasy.png" alt="logo-condomeasy">
 
-        <div class=" col-12 col-md-6 col-lg-4 col-xl-2">
+        <div class=" col-12 col-md-6 col-xl-2">
             <app-input-text
                 [control]="loginForm.controls['username']"
                 placeholder="Nome de usuário ou e-mail"
-                identifier="username-input-text">
+                identifier="username-input-text"
+                errorMessage="Campo obrigatório">
             </app-input-text>
         </div>
 
-        <div class=" col-12 col-md-6 col-lg-4 col-xl-2">
+        <div class=" col-12 col-md-6 col-xl-2">
             <app-input-text
                 [control]="loginForm.controls['password']"
                 placeholder="Senha"
                 type="password"
-                identifier="password-input-text">
+                identifier="password-input-text"
+                errorMessage="Campo obrigatório">
             </app-input-text>
         </div>
 
@@ -30,7 +32,7 @@
             <app-button
                 name="Entrar"
                 className="btn-primary btn-lg"
-                (onClick)="send()"
+                (onClick)="login()"
                 identifier="login-button">
             </app-button>
         </div>
