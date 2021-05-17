@@ -1,40 +1,50 @@
 <div class="row">
-    <div class="col-12 d-flex flex-column align-items-center">
+  <div class="col-12 d-flex flex-column align-items-center">
+    <img
+      class="logo"
+      src="../../../assets/logo-condomeasy.png"
+      alt="logo-condomeasy"
+    />
 
-        <img class="logo"  src="../../../assets/logo-condomeasy.png" alt="logo-condomeasy">
-
-        <div class=" col-12 col-md-6 col-xl-2">
-            <app-input-text
-                [control]="loginForm.controls['username']"
-                placeholder="Nome de usuário ou e-mail"
-                identifier="username-input-text"
-                errorMessage="Campo obrigatório">
-            </app-input-text>
-        </div>
-
-        <div class=" col-12 col-md-6 col-xl-2">
-            <app-input-text
-                [control]="loginForm.controls['password']"
-                placeholder="Senha"
-                type="password"
-                identifier="password-input-text"
-                errorMessage="Campo obrigatório">
-            </app-input-text>
-        </div>
-
-        <div>
-            <span>Não tem conta? <a class="register-link">Registre-se aqui</a>.</span>
-        </div>
+    <div class="col-12 col-md-6 col-xl-2">
+      <app-input-text
+        [control]="loginForm.controls['username']"
+        placeholder="Nome de usuário ou e-mail"
+        identifier="username-input-text"
+        errorMessage="Campo obrigatório"
+      >
+      </app-input-text>
     </div>
 
-    <div class="col-12 button-area mt-3">
-        <div class="col-12 col-md-1">
-            <app-button
-                name="Entrar"
-                className="btn-primary btn-lg"
-                (onClick)="login()"
-                identifier="login-button">
-            </app-button>
-        </div>
+    <div class="col-12 col-md-6 col-xl-2">
+      <app-input-text
+        [control]="loginForm.controls['password']"
+        placeholder="Senha"
+        type="password"
+        identifier="password-input-text"
+        errorMessage="Campo obrigatório"
+      >
+      </app-input-text>
     </div>
+
+    <div>
+      <span
+        >Não tem conta?
+        <a routerLink="/signup" class="register-link">Registre-se aqui</a
+        >.</span
+      >
+    </div>
+  </div>
+
+  <div class="col-12 button-area mt-3">
+    <div class="col-12 col-md-1">
+      <app-button
+        name="Entrar"
+        className="btn-primary btn-lg"
+        (onClick)="login()"
+        identifier="login-button"
+      >
+      </app-button>
+    </div>
+  </div>
 </div>

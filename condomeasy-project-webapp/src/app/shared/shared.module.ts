@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ButtonComponent } from './components/dumbs/buttons/button/button.component';
 import { InputTextComponent } from './components/dumbs/input-text/input-text.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NavbarComponent } from './components/smarts/navbar/navbar.component';
 
 const COMPONENTS = [
   ButtonComponent,
@@ -12,7 +13,7 @@ const COMPONENTS = [
 
 @NgModule({
   declarations: [    
-    ...COMPONENTS
+    ...COMPONENTS, NavbarComponent
   ],
   imports: [
     CommonModule,

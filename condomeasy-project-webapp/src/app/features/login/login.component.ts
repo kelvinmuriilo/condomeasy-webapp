@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/core/auth/auth.service';
+import { TokenService } from 'src/app/core/token/token.service';
 
 @Component({
   selector: 'app-login',
@@ -11,12 +12,15 @@ import { AuthService } from 'src/app/core/auth/auth.service';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  defaultUsername: string = 'admin';
+  defaultPassword: string = 'admin';
 
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private tokenService: TokenService
   ) {}
 
   ngOnInit(): void {
@@ -28,14 +32,24 @@ export class LoginComponent implements OnInit {
     let password = this.loginForm.value.password;
 
     if (this.loginForm.valid) {
-      this.authService.authenticate(username, password).subscribe(
+      if (
+        username === this.defaultUsername &&
+        password === this.defaultPassword
+      ) {
+        this.tokenService.setToken('logado :)');
+        this.router.navigate(['']);
+      } else {
+        this.toastrService.error('Falha ao realizar login. :(');
+      }
+
+      /* this.authService.authenticate(username, password).subscribe(
         () => {
           this.router.navigate(['/home']);
         },
         () => {
           this.toastrService.error('Falha ao realizar login');
         }
-      );
+      ); */
     } else {
       if (!username) {
         this.setErrorOnFormControlWhenIsBlank('username');
