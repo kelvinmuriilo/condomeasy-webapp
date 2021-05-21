@@ -1,6 +1,15 @@
+.row {
+  background-color: rgb(249, 249, 249);
+}
+
+.card-body {
+  box-shadow: 200px rgba(0, 0, 0, 0.5) !important;
+}
+
 .logo {
   width: 350px;
   height: 400px;
+  object-fit: cover;
 }
 
 .button-area {
