@@ -18,7 +18,6 @@ import { ToastrModule } from 'ngx-toastr';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing.module';
 import { SignupComponent } from './features/signup/signup.component';
-import { NavbarComponent } from './shared/components/smarts/navbar/navbar.component';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, HomeComponent, SignupComponent],

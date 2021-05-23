@@ -1,17 +1,13 @@
-
 <div class="input-group mb-3">
-     <input 
-        class="form-control"
-        [class.is-invalid]="isInvalid()"
-        [id]="identifier"
-        [type]="type" 
-        [formControl]="control"
-        [placeholder]="placeholder"
-        (keyup)="onKeyUp($event.target.value)"
-    >
-</div>
-<div class="area-error-message" *ngIf="isInvalid()">
-  <span class="error-message">
-    {{ errorMessage }}
-  </span>
+  <input
+    class="form-control"
+    [class.is-invalid]="isInvalid()"
+    [id]="identifier"
+    [type]="type"
+    [formControl]="control"
+    [placeholder]="placeholder"
+    (keyup)="onKeyUp($event.target.value)"
+    [mask]="mask"
+    [thousandSeparator]="thousandSeparator"
+  />
 </div>

@@ -1,11 +1,144 @@
 <div class="row justify-content-center align-items-center">
-  <div class="col-6">
-    <div class="card mt-5">
-      <span>Crie uma conta e comece a usar o Condomeasy</span>
+  <div class="col-10 col-lg-6 mt-5">
+    <h2>Crie uma conta e comece a usar o Condomeasy</h2>
 
-      <div class="card-body">
-        <div class="col-4">
-          <app-input-text></app-input-text>
+    <div class="row">
+      <div class="col-12 col-lg-6">
+        <app-input-text
+          placeholder="Nome"
+          [control]="signupForm.controls['firstName']"
+          identifier="first-name-input-signup"
+        >
+        </app-input-text>
+
+        <app-input-error-message
+          message="Campo obrigatório"
+          [isVisible]="
+            signupForm.controls['firstName']?.errors?.required &&
+            signupForm.controls['firstName']?.touched
+          "
+        >
+        </app-input-error-message>
+
+        <app-input-error-message
+          message="Insira pelo menos 3 letras"
+          [isVisible]="signupForm.controls['firstName']?.errors?.minLength"
+        >
+        </app-input-error-message>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-lg-6">
+        <app-input-text
+          placeholder="Sobrenome"
+          [control]="signupForm.controls['lastName']"
+          identifier="last-name-input-signup"
+        >
+        </app-input-text>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-lg-3">
+        <app-input-text
+          placeholder="Bloco"
+          [control]="signupForm.controls['blocoApto']"
+          identifier="numeroApto-input-signup"
+        >
+        </app-input-text>
+      </div>
+
+      <div class="col-12 col-lg-3">
+        <app-input-text
+          placeholder="Número apto"
+          [control]="signupForm.controls['numeroApto']"
+          identifier="numeroApto-input-signup"
+        >
+        </app-input-text>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-lg-4">
+        <app-input-text
+          placeholder="CPF"
+          [control]="signupForm.controls['cpf']"
+          identifier="cpf-input-signup"
+          mask="000.000.000-00"
+        >
+        </app-input-text>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-lg-6">
+        <app-input-text
+          placeholder="E-mail"
+          [control]="signupForm.controls['email']"
+          identifier="email-input-signup"
+        >
+        </app-input-text>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-lg-4">
+        <app-input-text
+          placeholder="Nome de usuário"
+          [control]="signupForm.controls['username']"
+          identifier="username-input-signup"
+        >
+        </app-input-text>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-lg-4">
+        <app-input-text
+          placeholder="Senha"
+          [control]="signupForm.controls['password']"
+          identifier="password-input-signup"
+          type="password"
+        >
+        </app-input-text>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-lg-4">
+        <app-input-text
+          placeholder="Repita a senha"
+          [control]="signupForm.controls['password']"
+          identifier="password-input-signup"
+          type="password"
+        >
+        </app-input-text>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-lg-4">
+        <app-input-text
+          placeholder="Celular"
+          [control]="signupForm.controls['phone']"
+          identifier="phone-input-signup"
+          mask="(00) 0 0000-0000"
+        >
+        </app-input-text>
+      </div>
+    </div>
+
+    <div class="button-area">
+      <div class="row">
+        <div class="col-12 col-lg-2">
+          <app-main-button
+            className="btn-primary btn-lg"
+            name="Enviar"
+            identifier="send-create-button-signup"
+            (onClick)="send()"
+          >
+          </app-main-button>
         </div>
       </div>
     </div>
