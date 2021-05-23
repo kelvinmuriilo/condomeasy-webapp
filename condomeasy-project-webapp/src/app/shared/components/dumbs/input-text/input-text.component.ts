@@ -14,6 +14,8 @@ export class InputTextComponent implements OnInit {
   @Input() type?: string = 'text';
   @Input() identifier: string;
   @Input() errorMessage: string;
+  @Input() mask?: string;
+  @Input() thousandSeparator?: string;
 
   @Output() changeValue: EventEmitter<string> = new EventEmitter<string>();
 

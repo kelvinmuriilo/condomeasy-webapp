@@ -8,6 +8,8 @@ import { MainButtonComponent } from './components/dumbs/buttons/main-button/main
 import { CardComponent } from './components/dumbs/card/card.component';
 
 import { MatCardModule } from '@angular/material/card';
+import { NgxMaskModule } from 'ngx-mask';
+import { InputErrorMessageComponent } from './components/dumbs/input-error-message/input-error-message.component';
 
 const COMPONENTS = [
   ButtonComponent,
@@ -15,11 +17,17 @@ const COMPONENTS = [
   NavbarComponent,
   MainButtonComponent,
   CardComponent,
+  InputErrorMessageComponent,
 ];
 
 @NgModule({
   declarations: [...COMPONENTS],
-  imports: [CommonModule, ReactiveFormsModule, MatCardModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    MatCardModule,
+    NgxMaskModule.forRoot(),
+  ],
   exports: [...COMPONENTS],
 })
 export class SharedModule {}
