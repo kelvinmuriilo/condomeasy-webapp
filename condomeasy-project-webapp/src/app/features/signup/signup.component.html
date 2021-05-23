@@ -22,7 +22,10 @@
 
         <app-input-error-message
           message="Insira pelo menos 3 letras"
-          [isVisible]="signupForm.controls['firstName']?.errors?.minLength"
+          [isVisible]="
+            signupForm.controls['firstName']?.errors?.minlength &&
+            signupForm.controls['firstName']?.touched
+          "
         >
         </app-input-error-message>
       </div>
@@ -41,6 +44,15 @@
           message="Campo obrigatório"
           [isVisible]="
             signupForm.controls['lastName']?.errors?.required &&
+            signupForm.controls['lastName']?.touched
+          "
+        >
+        </app-input-error-message>
+
+        <app-input-error-message
+          message="Insira pelo menos 3 letras"
+          [isVisible]="
+            signupForm.controls['lastName']?.errors?.minlength &&
             signupForm.controls['lastName']?.touched
           "
         >
@@ -72,6 +84,7 @@
           placeholder="Número apto"
           [control]="signupForm.controls['numeroApto']"
           identifier="numeroApto-input-signup"
+          mask="0*"
         >
         </app-input-text>
 
@@ -104,6 +117,15 @@
           "
         >
         </app-input-error-message>
+
+        <app-input-error-message
+          message="O CPF precisa ter 11 números"
+          [isVisible]="
+            signupForm.controls['cpf']?.errors?.minlength &&
+            signupForm.controls['cpf']?.touched
+          "
+        >
+        </app-input-error-message>
       </div>
     </div>
 
@@ -124,6 +146,15 @@
           "
         >
         </app-input-error-message>
+
+        <app-input-error-message
+          message="Insira um e-mail válido"
+          [isVisible]="
+            signupForm.controls['email']?.errors?.email &&
+            signupForm.controls['email']?.touched
+          "
+        >
+        </app-input-error-message>
       </div>
     </div>
 
@@ -140,6 +171,15 @@
           message="Campo obrigatório"
           [isVisible]="
             signupForm.controls['username']?.errors?.required &&
+            signupForm.controls['username']?.touched
+          "
+        >
+        </app-input-error-message>
+
+        <app-input-error-message
+          message="Insira pelo menos 3 dígitos"
+          [isVisible]="
+            signupForm.controls['username']?.errors?.minlength &&
             signupForm.controls['username']?.touched
           "
         >
@@ -215,6 +255,15 @@
           message="Campo obrigatório"
           [isVisible]="
             signupForm.controls['phone']?.errors?.required &&
+            signupForm.controls['phone']?.touched
+          "
+        >
+        </app-input-error-message>
+
+        <app-input-error-message
+          message="O telefone informado precisa ter 11 números"
+          [isVisible]="
+            signupForm.controls['phone']?.errors?.minlength &&
             signupForm.controls['phone']?.touched
           "
         >
