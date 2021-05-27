@@ -29,8 +29,7 @@ export class AuthService {
     return this.tokenService.hasToken();
   }
 
-  test(): Observable<any> {
-    const login = { username: 'admin', password: 'root1526' };
+  test(login: LoginRequestModel): Observable<any> {
     return this.httpClient.post<any>(
       `http://b574dec2ef54.ngrok.io/condomeasy-backend-api/v1/authenticate`,
       login

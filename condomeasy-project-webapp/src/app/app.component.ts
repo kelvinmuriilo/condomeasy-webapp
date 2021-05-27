@@ -6,12 +6,6 @@ import { AuthService } from './core/auth/auth.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'condomeasy-project-webapp';
-
-  constructor(private authService: AuthService) {}
-
-  ngOnInit(): void {
-    this.authService.test().subscribe((result) => console.log(result));
-  }
 }
