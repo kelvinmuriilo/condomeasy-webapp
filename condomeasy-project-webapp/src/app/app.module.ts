@@ -20,7 +20,7 @@ import { AppRoutingModule } from './app.routing.module';
 import { SignupComponent } from './features/signup/signup.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, HomeComponent, SignupComponent],
+  declarations: [AppComponent, LoginComponent, HomeComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

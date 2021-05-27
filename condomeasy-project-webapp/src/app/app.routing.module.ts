@@ -8,13 +8,18 @@ import { AuthGuard } from './core/auth/auth.guard';
 const routes: Routes = [
   {
     path: '',
+    redirectTo: 'home',
+    pathMatch: 'full',
+  },
+  {
+    path: 'home',
     component: HomeComponent,
     canActivate: [AuthGuard],
   },
   {
     path: 'signup',
-    component: SignupComponent,
-    pathMatch: 'full',
+    loadChildren: () =>
+      import('./features/signup/signup.module').then((m) => m.SignupModule),
   },
   {
     path: 'login',

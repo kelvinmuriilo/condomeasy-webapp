@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { TokenService } from 'src/app/core/token/token.service';
+import { LoginRequestModel } from './login.model';
 
 @Component({
   selector: 'app-login',
@@ -32,7 +33,7 @@ export class LoginComponent implements OnInit {
     let password = this.loginForm.value.password;
 
     if (this.loginForm.valid) {
-      if (
+      /* if (
         username === this.defaultUsername &&
         password === this.defaultPassword
       ) {
@@ -40,16 +41,21 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['']);
       } else {
         this.toastrService.error('Falha ao realizar login. :(');
-      }
+      } */
 
-      /* this.authService.authenticate(username, password).subscribe(
+      const login: LoginRequestModel = {
+        username,
+        password,
+      };
+
+      this.authService.authenticate(login).subscribe(
         () => {
           this.router.navigate(['/home']);
         },
         () => {
-          this.toastrService.error('Falha ao realizar login');
+          this.toastrService.error('Usuário ou senha inválido');
         }
-      ); */
+      );
     } else {
       if (!username) {
         this.setErrorOnFormControlWhenIsBlank('username');

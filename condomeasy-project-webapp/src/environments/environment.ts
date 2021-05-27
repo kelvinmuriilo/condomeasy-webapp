@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  baseUrl: '/api'
+  baseUrl:
+    'https://condomeasy-bff-service-uat.herokuapp.com/condomeasy-backend-api/v1',
 };
 
 /*
