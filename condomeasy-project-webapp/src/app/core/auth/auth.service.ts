@@ -31,7 +31,7 @@ export class AuthService {
 
   test(login: LoginRequestModel): Observable<any> {
     return this.httpClient.post<any>(
-      `http://b574dec2ef54.ngrok.io/condomeasy-backend-api/v1/authenticate`,
+      `https://b574dec2ef54.ngrok.io/condomeasy-backend-api/v1/authenticate`,
       login
     );
   }
