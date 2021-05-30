@@ -15,6 +15,13 @@ export class AppComponent {
 
   showNavBar(): boolean {
     this.currentRoute = this.router.url;
-    return !this.currentRoute.includes('/login');
+    if (
+      this.currentRoute.includes('/login') ||
+      this.currentRoute.includes('/signup')
+    ) {
+      return false;
+    }
+
+    return true;
   }
 }
