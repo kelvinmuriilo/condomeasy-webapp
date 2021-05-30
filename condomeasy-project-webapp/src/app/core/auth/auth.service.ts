@@ -4,7 +4,10 @@ import { Observable } from 'rxjs';
 import { environment } from './../../../environments/environment';
 import { tap } from 'rxjs/operators';
 import { TokenService } from '../token/token.service';
-import { LoginRequestModel } from 'src/app/features/login/login.model';
+import {
+  LoginRequestModel,
+  LoginResponseModel,
+} from 'src/app/features/login/login.model';
 
 const baseUrl = environment.baseUrl;
 
@@ -17,22 +20,17 @@ export class AuthService {
     private tokenService: TokenService
   ) {}
 
-  authenticate(login: LoginRequestModel): Observable<string> {
-    return this.httpClient.post<string>(`${baseUrl}/authenticate`, login).pipe(
-      tap((res) => {
-        this.tokenService.setToken(res);
-      })
-    );
+  authenticate(login: LoginRequestModel): Observable<LoginResponseModel> {
+    return this.httpClient
+      .post<LoginResponseModel>(`${baseUrl}/authenticate`, login)
+      .pipe(
+        tap((res) => {
+          this.tokenService.setToken(res.access_token);
+        })
+      );
   }
 
   isAuthenticated(): boolean {
     return this.tokenService.hasToken();
-  }
-
-  test(login: LoginRequestModel): Observable<any> {
-    return this.httpClient.post<any>(
-      `https://b574dec2ef54.ngrok.io/condomeasy-backend-api/v1/authenticate`,
-      login
-    );
   }
 }

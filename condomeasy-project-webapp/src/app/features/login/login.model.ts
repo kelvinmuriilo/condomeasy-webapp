@@ -4,5 +4,5 @@ export interface LoginRequestModel {
 }
 
 export interface LoginResponseModel {
-  accessToken: string;
+  access_token: string;
 }

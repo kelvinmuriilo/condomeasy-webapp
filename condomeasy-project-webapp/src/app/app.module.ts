@@ -1,4 +1,6 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,7 +19,11 @@ import { HomeComponent } from './features/home/home.component';
 import { ToastrModule } from 'ngx-toastr';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing.module';
-import { SignupComponent } from './features/signup/signup.component';
+import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
+
+import { NgxSpinnerModule } from 'ngx-spinner';
+
+registerLocaleData(localePt, 'pt');
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, HomeComponent],
@@ -31,6 +37,7 @@ import { SignupComponent } from './features/signup/signup.component';
     HttpClientModule,
     RouterModule.forRoot([]),
     AppRoutingModule,
+    NgxSpinnerModule,
   ],
   providers: [
     {
@@ -38,6 +45,12 @@ import { SignupComponent } from './features/signup/signup.component';
       useClass: TokenInterceptor,
       multi: true,
     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
+      multi: true,
+    },
+    { provide: LOCALE_ID, useValue: 'pt-BR' },
   ],
   bootstrap: [AppComponent],
 })
