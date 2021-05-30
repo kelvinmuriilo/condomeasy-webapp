@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     let password = this.loginForm.value.password;
 
     if (this.loginForm.valid) {
-      /* if (
+      /*  if (
         username === this.defaultUsername &&
         password === this.defaultPassword
       ) {
@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
         password,
       };
 
-      this.authService.test(login).subscribe(
+      this.authService.authenticate(login).subscribe(
         () => {
           this.router.navigate(['/home']);
         },

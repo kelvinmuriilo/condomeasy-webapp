@@ -6,3 +6,46 @@
   background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
   background-size: cover;
 }
+
+.name {
+  font-size: 1.5em;
+}
+
+.cover {
+  /*  width: 20%;
+  height: auto;
+  background-size: cover; */
+  max-width: 200px;
+  max-height: 50px;
+  width: auto;
+  height: auto;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.announcement__header {
+  width: 40%;
+}
+
+.announcement__title {
+  font-size: 1.2em;
+  height: 30%;
+}
+
+.announcement__body {
+  width: 60%;
+  margin-left: 20px;
+}
+
+.announcement__image {
+  width: 100%;
+  height: auto;
+}
+
+.description-area {
+  height: 40px;
+  text-overflow: ellipsis;
+  display: inline-block;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+}
