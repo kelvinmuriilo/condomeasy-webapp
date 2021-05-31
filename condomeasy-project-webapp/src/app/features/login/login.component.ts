@@ -33,16 +33,6 @@ export class LoginComponent implements OnInit {
     let password = this.loginForm.value.password;
 
     if (this.loginForm.valid) {
-      /*  if (
-        username === this.defaultUsername &&
-        password === this.defaultPassword
-      ) {
-        this.tokenService.setToken('logado :)');
-        this.router.navigate(['']);
-      } else {
-        this.toastrService.error('Falha ao realizar login. :(');
-      } */
-
       const login: LoginRequestModel = {
         username,
         password,
@@ -52,8 +42,9 @@ export class LoginComponent implements OnInit {
         () => {
           this.router.navigate(['/home']);
         },
-        () => {
-          this.toastrService.error('Usuário ou senha inválido');
+        (error) => {
+          this.toastrService.error(error.error.message);
+          console.log(error);
         }
       );
     } else {

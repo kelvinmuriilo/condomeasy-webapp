@@ -1,13 +1,14 @@
 export interface SignupModel {
-  nome: string;
-  blocoApto: string;
+  name: string;
+  apartmentBlock: string;
   cpf: string;
-  usuario: string;
-  senha: string;
-  perfilId: number;
-  numeroApto: number;
-  condominioId: number;
+  username: string;
+  password: string;
+  profileId: number;
+  apartmentNumber: string;
+  condominiumId: number;
   email: string;
-  telefone: string;
-  sobrenome: string;
+  status: string;
+  telephone: string;
+  surname: string;
 }

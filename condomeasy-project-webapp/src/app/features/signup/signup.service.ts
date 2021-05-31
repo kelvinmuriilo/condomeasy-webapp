@@ -13,6 +13,6 @@ export class SignupService {
   constructor(private httpClient: HttpClient) {}
 
   send(signup: SignupModel): Observable<any> {
-    return this.httpClient.post<any>(`${baseUrl}/api/user`, signup);
+    return this.httpClient.post<any>(`${baseUrl}/user`, signup);
   }
 }
