@@ -7,6 +7,7 @@ import jwt_decode from 'jwt-decode';
 import jwtDecode from 'jwt-decode';
 import { UserToken } from './user.model';
 import { Router } from '@angular/router';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -15,13 +16,12 @@ export class UserService {
   private userSubject = new BehaviorSubject<any>(null);
 
   constructor(private tokenService: TokenService, private router: Router) {
-    /*  this.tokenService.hasToken() && this.decodeAndNotify(); */
+    this.tokenService.hasToken() && this.decodeAndNotify();
   }
 
   setToken(token: string) {
     this.tokenService.setToken(token);
-    /*     this.decodeAndNotify();
-     */
+    this.decodeAndNotify();
   }
 
   getUser() {

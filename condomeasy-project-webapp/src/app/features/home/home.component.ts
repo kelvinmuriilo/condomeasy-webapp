@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.announcements = [
       {
-        title: 'Why do we use it?',
+        title: 'Bike fixa/single speed',
         userFirstName: 'Michael',
         userLastName: 'Jordan',
         price: 2500,

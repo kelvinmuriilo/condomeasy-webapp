@@ -38,7 +38,7 @@ export class SignupComponent implements OnInit {
           this.router.navigate(['/login']);
         },
         (error) => {
-          this.toastService.error('Houve um erro ao tentar realizar cadastro.');
+          this.toastService.error(error.error.message);
         },
         () => {}
       );
@@ -48,6 +48,10 @@ export class SignupComponent implements OnInit {
           this.setErrorOnFormControlWhenIsBlank(key);
       });
     }
+  }
+
+  backToLogin(): void {
+    this.router.navigate(['/login']);
   }
 
   private startSignupForm(): void {
@@ -61,7 +65,7 @@ export class SignupComponent implements OnInit {
           Validators.required,
           Validators.minLength(3),
         ]),
-        blocoApto: this.formbuilder.control('', [Validators.required]),
+        apartamentBlock: this.formbuilder.control('', [Validators.required]),
         cpf: this.formbuilder.control('', [
           Validators.required,
           Validators.minLength(11),
@@ -71,9 +75,15 @@ export class SignupComponent implements OnInit {
           Validators.required,
           Validators.minLength(3),
         ]),
-        password: this.formbuilder.control('', Validators.required),
-        confirmPassword: this.formbuilder.control('', Validators.required),
-        numeroApto: this.formbuilder.control('', [
+        password: this.formbuilder.control('', [
+          Validators.required,
+          Validators.minLength(8),
+        ]),
+        confirmPassword: this.formbuilder.control('', [
+          Validators.required,
+          Validators.minLength(8),
+        ]),
+        apartmentNumber: this.formbuilder.control('', [
           Validators.required,
           Validators.min(1),
         ]),
@@ -86,6 +96,7 @@ export class SignupComponent implements OnInit {
           Validators.minLength(11),
           Validators.maxLength(11),
         ]),
+        condominiumId: this.formbuilder.control('', [Validators.required]),
       },
       {
         validators: FormValidations.passwordMatchValidator,
@@ -100,17 +111,18 @@ export class SignupComponent implements OnInit {
 
   private getSignupModel(): SignupModel {
     return {
-      nome: this.signupForm.value.firstName,
-      sobrenome: this.signupForm.value.lastName,
+      name: this.signupForm.value.firstName,
+      apartmentBlock: this.signupForm.value.apartamentBlock,
       cpf: this.signupForm.value.cpf,
-      blocoApto: this.signupForm.value.blocoApto,
-      condominioId: 0,
+      username: this.signupForm.value.username,
+      profileId: 1,
+      condominiumId: this.signupForm.value.condominiumId,
       email: this.signupForm.value.email,
-      numeroApto: this.signupForm.value.numeroApto,
-      perfilId: 0,
-      senha: this.signupForm.value.password,
-      telefone: this.signupForm.value.phone,
-      usuario: this.signupForm.value.username,
+      status: 'AT',
+      telephone: this.signupForm.value.phone,
+      surname: this.signupForm.value.lastName,
+      apartmentNumber: this.signupForm.value.apartmentNumber,
+      password: this.signupForm.value.password,
     };
   }
 }

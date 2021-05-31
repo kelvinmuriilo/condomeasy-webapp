@@ -1,14 +1,15 @@
-<div class="col-12 d-flex flex-column px-0">
-  <div *ngFor="let announcement of announcements">
-    <div class="col-12 col-md-4 mb-2">
-      <app-card
-        [title]="announcement.title"
-        [price]="announcement.price"
-        [userFirstName]="announcement.userFirstName"
-        [userLastName]="announcement.userLastName"
-        [description]="announcement.description"
-        [imgPath]="announcement?.imgPath"
-      ></app-card>
-    </div>
+<div class="col-12 d-flex flex-column align-items-center px-0">
+  <div
+    class="col-12 col-md-4 mb-2 mt-4"
+    *ngFor="let announcement of announcements"
+  >
+    <app-card
+      [title]="announcement.title"
+      [price]="announcement.price"
+      [userFirstName]="announcement.userFirstName"
+      [userLastName]="announcement.userLastName"
+      [description]="announcement.description"
+      [imgPath]="announcement?.imgPath"
+    ></app-card>
   </div>
 </div>
