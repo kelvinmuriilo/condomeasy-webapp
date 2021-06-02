@@ -1,8 +1,5 @@
-<div class="collapse" id="navbarToggleExternalContent">
+<!-- <div class="collapse" id="navbarToggleExternalContent">
   <div class="main-green-bg p-4">
-    <!--     <h5 class="text-white h4">Collapsed content</h5>
- -->
-    <!-- <span class="text-muted">Toggleable via the navbar brand.</span> -->
   </div>
 
   <span><a (click)="logout()">Sair</a></span>
@@ -21,4 +18,28 @@
       <span class="navbar-toggler-icon"></span>
     </button>
   </div>
-</nav>
+</nav> -->
+
+<mat-toolbar class="col-12 main-green-bg d-flex justify-content-between">
+  <div class="col-4">
+    <button mat-icon-button (click)="openSideNavbar()">
+      <mat-icon style="color: white">menu</mat-icon>
+    </button>
+  </div>
+
+  <div class="col-4 d-flex justify-content-center">
+    <img class="logo" src="./../../../../../assets/logo-sem-nome-bg.png" />
+  </div>
+
+  <!--  <div>
+        <a (click)="logout()">Sair</a>
+      </div> -->
+  <div class="col-4 d-flex justify-content-end">
+    <app-input-search
+      class="input-search"
+      [control]="navbarForm.controls['search']"
+      placeholder="Pesquisar"
+    >
+    </app-input-search>
+  </div>
+</mat-toolbar>
