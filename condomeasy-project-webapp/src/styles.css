@@ -16,3 +16,53 @@ body {
 .main-green-bg {
   background-color: rgb(5, 99, 103);
 }
+
+/*Side navbar config*/
+
+@media (max-width: 576px) {
+  .navbar-dialog-config {
+    width: 90%;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 720px) {
+  .navbar-dialog-config {
+    width: 40%;
+  }
+}
+
+@media (min-width: 720px) and (max-width: 960px) {
+  .navbar-dialog-config {
+    width: 30%;
+  }
+}
+
+@media (min-width: 961px) {
+  .navbar-dialog-config {
+    width: 20%;
+  }
+}
+
+/*Material animation dialog*/
+
+@keyframes slide-left {
+  100% {
+    left: 0;
+  }
+}
+
+@keyframes slide {
+  100% {
+    left: 0;
+  }
+}
+
+.dialog-side-panel {
+  position: fixed !important;
+  bottom: 0;
+  top: 0;
+  left: -100vw;
+  height: 100%;
+  animation: slide 0.1s forwards;
+  animation-delay: 0.1s;
+}

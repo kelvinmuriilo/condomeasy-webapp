@@ -1,0 +1,8 @@
+ul {
+  list-style: none;
+}
+
+.nav-item {
+  height: 40px;
+  cursor: pointer;
+}

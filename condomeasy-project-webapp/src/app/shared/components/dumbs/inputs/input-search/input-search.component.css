@@ -1,0 +1,13 @@
+.form-control {
+  border-radius: 5%;
+}
+
+.input-search {
+  border-radius: 50px;
+  border: none;
+}
+
+.fa-search {
+  cursor: pointer;
+  color: white;
+}
