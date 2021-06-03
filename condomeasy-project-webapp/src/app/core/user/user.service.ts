@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
 import { TokenService } from '../token/token.service';
 import { BehaviorSubject } from 'rxjs';
-
 import jwt_decode from 'jwt-decode';
-
-import jwtDecode from 'jwt-decode';
 import { UserToken } from './user.model';
 import { Router } from '@angular/router';
 
@@ -42,9 +39,21 @@ export class UserService {
     return this.username;
   }
 
+  getAutorities(): Array<any> {
+    return this.tokenService.getAuthorities();
+  }
+
+  matchAuthorities(roles: Array<any>, userRoles: Array<any>): boolean {
+    return roles?.some((role) => {
+      return userRoles?.some(
+        (userrole) => userrole.authority === role.authority
+      );
+    });
+  }
+
   private decodeAndNotify() {
     const token = this.tokenService.getToken();
-    const role = jwt_decode(token) as UserToken;
-    console.log(role.sub);
+    const user = jwt_decode(token) as UserToken;
+    this.tokenService.setAuthorities(JSON.stringify(user.profiles));
   }
 }

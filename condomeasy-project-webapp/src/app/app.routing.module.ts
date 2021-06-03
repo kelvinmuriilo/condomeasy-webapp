@@ -2,8 +2,9 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule, CanActivate } from '@angular/router'; // CLI imports router
 import { HomeComponent } from './features/home/home.component';
 import { LoginComponent } from './features/login/login.component';
-import { SignupComponent } from './features/signup/signup.component';
 import { AuthGuard } from './core/auth/auth.guard';
+import { UserRole } from './core/user/user.model';
+import { ForbiddenComponent } from './core/forbidden/forbidden.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,9 @@ const routes: Routes = [
     path: 'home',
     component: HomeComponent,
     canActivate: [AuthGuard],
+    data: {
+      roles: [{ authority: UserRole.ADMIN }, { authority: UserRole.USER }],
+    },
   },
   {
     path: 'signup',
@@ -25,6 +29,10 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent,
     pathMatch: 'full',
+  },
+  {
+    path: 'forbidden',
+    component: ForbiddenComponent,
   },
 ];
 
