@@ -15,8 +15,8 @@ export class FormValidations {
       passwordControl.setErrors({ passwordMatch: true });
       confirmPasswordControl.setErrors({ passwordMatch: true });
     } else {
-      passwordControl.setErrors(null);
-      confirmPasswordControl.setErrors(null);
+      passwordControl.setErrors({ passwordMatch: false });
+      confirmPasswordControl.setErrors({ passwordMatch: false });
     }
 
     return password === confirmPassword ? null : { passwordMatch: true };
