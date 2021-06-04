@@ -12,9 +12,7 @@ export class UserService {
   private username: string;
   private userSubject = new BehaviorSubject<any>(null);
 
-  constructor(private tokenService: TokenService, private router: Router) {
-    this.tokenService.hasToken() && this.decodeAndNotify();
-  }
+  constructor(private tokenService: TokenService, private router: Router) {}
 
   setToken(token: string) {
     this.tokenService.setToken(token);

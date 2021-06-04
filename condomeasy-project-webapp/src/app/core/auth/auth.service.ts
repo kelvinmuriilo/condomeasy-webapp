@@ -8,6 +8,7 @@ import {
   LoginRequestModel,
   LoginResponseModel,
 } from 'src/app/features/login/login.model';
+import { UserService } from '../user/user.service';
 
 const baseUrl = environment.baseUrl;
 
@@ -17,7 +18,7 @@ const baseUrl = environment.baseUrl;
 export class AuthService {
   constructor(
     private httpClient: HttpClient,
-    private tokenService: TokenService
+    private userService: UserService
   ) {}
 
   authenticate(login: LoginRequestModel): Observable<LoginResponseModel> {
@@ -25,12 +26,12 @@ export class AuthService {
       .post<LoginResponseModel>(`${baseUrl}/authenticate`, login)
       .pipe(
         tap((res) => {
-          this.tokenService.setToken(res.access_token);
+          this.userService.setToken(res.access_token);
         })
       );
   }
 
   isAuthenticated(): boolean {
-    return this.tokenService.hasToken();
+    return this.userService.isLogged();
   }
 }
