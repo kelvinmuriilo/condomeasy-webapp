@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule, CanActivate } from '@angular/router'; // CLI imports router
+import { Routes, RouterModule } from '@angular/router'; // CLI imports router
 import { HomeComponent } from './features/home/home.component';
 import { LoginComponent } from './features/login/login.component';
 import { AuthGuard } from './core/auth/auth.guard';
@@ -9,21 +9,24 @@ import { ForbiddenComponent } from './core/forbidden/forbidden.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'advertisements',
     pathMatch: 'full',
-  },
-  {
-    path: 'home',
-    component: HomeComponent,
-    canActivate: [AuthGuard],
-    data: {
-      roles: [{ authority: UserRole.ADMIN }, { authority: UserRole.USER }],
-    },
   },
   {
     path: 'signup',
     loadChildren: () =>
       import('./features/signup/signup.module').then((m) => m.SignupModule),
+  },
+  {
+    path: 'advertisements',
+    canActivate: [AuthGuard],
+    data: {
+      roles: [{ authority: UserRole.ADMIN }, { authority: UserRole.USER }],
+    },
+    loadChildren: () =>
+      import('./features/advertisement/module/advertisement.module').then(
+        (m) => m.AdvertisementModule
+      ),
   },
   {
     path: 'login',

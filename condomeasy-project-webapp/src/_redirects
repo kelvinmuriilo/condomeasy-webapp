@@ -1,7 +1,1 @@
-[build]
-  publish = "dist/condomeasy-project-webapp"
-  command = "ng build --prod"
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+/* /index.html 200

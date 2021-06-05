@@ -13,6 +13,7 @@ import { InputErrorMessageComponent } from './components/dumbs/inputs/input-erro
 import { MaterialModule } from './material/material.module';
 import { InputSearchComponent } from './components/dumbs/inputs/input-search/input-search.component';
 import { SideNavbarComponent } from './components/smarts/navbar/side-navbar/side-navbar.component';
+import { RouterModule } from '@angular/router';
 
 const COMPONENTS = [
   ButtonComponent,
@@ -31,7 +32,8 @@ const COMPONENTS = [
     MatCardModule,
     NgxMaskModule.forRoot(),
     MaterialModule,
+    RouterModule,
   ],
-  exports: [...COMPONENTS],
+  exports: [...COMPONENTS, MaterialModule],
 })
 export class SharedModule {}

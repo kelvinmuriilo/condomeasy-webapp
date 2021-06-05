@@ -40,11 +40,10 @@ export class LoginComponent implements OnInit {
 
       this.authService.authenticate(login).subscribe(
         () => {
-          this.router.navigate(['/home']);
+          this.router.navigate(['/advertisements']);
         },
         (error) => {
           this.toastrService.error(error.error.message);
-          console.log(error);
         }
       );
     } else {

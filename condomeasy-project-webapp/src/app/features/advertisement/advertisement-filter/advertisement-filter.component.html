@@ -1,0 +1,34 @@
+<div class="col-12 d-md-none flex-column" *ngIf="categories?.length">
+  <div class="d-md-flex justify-content-center">
+    <h3>Filtros</h3>
+  </div>
+
+  <h3>Categorias</h3>
+  <div class="d-flex flex-wrap">
+    <div *ngFor="let category of categories" class="px-1 py-1">
+      <app-button [name]="category.name" className="btn-outline-info">
+      </app-button>
+    </div>
+  </div>
+</div>
+
+<div class="card px-2 d-none d-md-block mt-3">
+  <div class="d-md-flex justify-content-center pt-2">
+    <h2>Filtros</h2>
+  </div>
+
+  <mat-expansion-panel class="mb-2">
+    <mat-expansion-panel-header> Categoria</mat-expansion-panel-header>
+    <ng-template matExpansionPanelContent>
+      <div *ngFor="let category of categories" class="px-1 py-1">
+        <app-button [name]="category.name" className="btn-outline-info">
+        </app-button>
+      </div>
+    </ng-template>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel class="mb-2">
+    <mat-expansion-panel-header> Preço </mat-expansion-panel-header>
+    <ng-template matExpansionPanelContent> </ng-template>
+  </mat-expansion-panel>
+</div>
