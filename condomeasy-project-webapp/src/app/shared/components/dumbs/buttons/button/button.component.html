@@ -6,6 +6,8 @@
     (click)="clickEvent()"
     [id]="identifier"
   >
+    <i *ngIf="fontIcon" class="{{ fontIcon }}"></i>
+
     {{ name }}
   </button>
 </div>

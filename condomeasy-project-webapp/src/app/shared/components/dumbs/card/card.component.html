@@ -1,33 +1,22 @@
-<div class="card announcement">
-  <div class="card-body d-flex">
-    <div class="announcement__header">
+<div class="col-12" (click)="bindClick()">
+  <div class="card d-flex flex-row p-2 p-md-3">
+    <div class="col-6">
       <img
+        class="img-fluid"
+        style="border-radius: 5px"
+        *ngIf="showImage()"
         class="announcement__image"
-        src="https://rivacycles.com/wp-content/uploads/2020/10/Basement-Pink-Profile-Mod.jpg"
+        [src]="imgPath"
         alt=""
       />
     </div>
-
-    <div class="announcement__body">
+    <div class="col-6 announcement__infos d-flex flex-column">
       <span class="announcement__title">{{ title }}</span>
-
-      <div
-        style="height: 70%"
-        class="mt-2 d-flex flex-column justify-content-between"
-      >
-        <div class="description-area">
-          <span class="announcement__description">{{ description }}</span>
-        </div>
-
-        <div class="d-flex justify-content-between">
-          <div>
-            <span>{{ userFirstName }} </span>
-            <span>{{ userLastName }}</span>
-          </div>
-
-          <span>{{ price | currency: "BRL" }}</span>
-        </div>
-      </div>
+      <span class="announcement__category mt-1"> {{ category }}</span>
+      <span class="announcement__description mt-2">{{ description }}</span>
+      <span class="announcement__price mt-1">
+        {{ price | currency: "BRL" }}
+      </span>
     </div>
   </div>
 </div>
