@@ -7,12 +7,14 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { AdvertisementComponent } from '../advertisement.component';
 import { AdvertisementFilterComponent } from '../advertisement-filter/advertisement-filter.component';
 import { AdvertisementDetailsComponent } from '../advertisement-details/advertisement-details.component';
+import { AdvertisementFormComponent } from './../advertisement-form/advertisement-form.component';
 
 @NgModule({
   declarations: [
     AdvertisementComponent,
     AdvertisementFilterComponent,
     AdvertisementDetailsComponent,
+    AdvertisementFormComponent,
   ],
   imports: [CommonModule, AdvertisementRoutingModule, SharedModule],
 })
