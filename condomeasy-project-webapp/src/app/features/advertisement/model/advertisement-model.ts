@@ -17,3 +17,19 @@ export interface AdvertisementListResponseModel extends ResponseModel {
 export interface AdvertisementResponseModel extends ResponseModel {
   data: Advertisement;
 }
+
+export interface CreateAdvertisement {
+  name: string;
+  description: string;
+  value: number;
+  category: Category;
+  userId: number;
+}
+
+export interface UpdateAdvertisement {
+  name: string;
+  description: string;
+  value: number;
+  category: Category;
+  userId: number;
+}

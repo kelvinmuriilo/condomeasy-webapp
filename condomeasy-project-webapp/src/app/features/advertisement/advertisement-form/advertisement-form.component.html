@@ -1,0 +1,35 @@
+<div class="col-12">
+  <h3>Criar novo anúncio</h3>
+  <div class="col-12 col-md-12 col-lg-6">
+    <app-input-text
+      [control]="advertisementForm.controls['name']"
+      placeholder="Título"
+      label="Título"
+      type="text"
+      identifier="advertisement-title-input-text"
+      errorMessage="Campo obrigatório"
+      appearance="outline"
+    >
+    </app-input-text>
+  </div>
+
+  <div class="col-12 col-md-12 col-lg-4">
+    <app-input-select label="Categoria" [options]="categories">
+    </app-input-select>
+  </div>
+
+  <div class="col-12 col-md-6 col-lg-3">
+    <app-input-text
+      [control]="advertisementForm.controls['value']"
+      placeholder="Preço"
+      label="Preço"
+      type="text"
+      identifier="advertisement-price-input-text"
+      errorMessage="Campo obrigatório"
+      prefix="R$ "
+      thousandSeparator="."
+      mask="0*,00"
+    >
+    </app-input-text>
+  </div>
+</div>
