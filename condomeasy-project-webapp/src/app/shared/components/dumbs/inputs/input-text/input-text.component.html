@@ -1,13 +1,18 @@
-<div class="input-group mb-3">
+<mat-form-field [appearance]="appearance" [style.width.%]="100">
+  <mat-label>{{ label }}</mat-label>
   <input
-    class="form-control"
+    matInput
     [class.is-invalid]="isInvalid()"
-    [id]="identifier"
-    [type]="type"
-    [formControl]="control"
     [placeholder]="placeholder"
+    [formControl]="control"
     (keyup)="onKeyUp($event.target.value)"
     [mask]="mask"
+    [suffix]="suffix"
+    [prefix]="prefix"
     [thousandSeparator]="thousandSeparator"
+    [id]="identifier"
+    [type]="type"
   />
-</div>
+  <!--   <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+ --></mat-form-field
+>

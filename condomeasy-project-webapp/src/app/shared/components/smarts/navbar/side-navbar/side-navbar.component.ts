@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { UserService } from 'src/app/core/user/user.service';
+import { AdvertisementFormComponent } from 'src/app/features/advertisement/advertisement-form/advertisement-form.component';
 
 @Component({
   selector: 'app-side-navbar',
@@ -12,7 +13,8 @@ export class SideNavbarComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private matDialogRef: MatDialogRef<SideNavbarComponent>
+    private matDialogRef: MatDialogRef<SideNavbarComponent>,
+    private matDialog: MatDialog
   ) {}
 
   ngOnInit(): void {}
@@ -20,5 +22,12 @@ export class SideNavbarComponent implements OnInit {
   logout(): void {
     this.matDialogRef.close();
     this.userService.logout();
+  }
+
+  openDialogCreateAdvertisement(): void {
+    this.matDialogRef.close();
+    this.matDialog.open(AdvertisementFormComponent, {
+      width: '700px',
+    });
   }
 }

@@ -14,6 +14,7 @@ import { MaterialModule } from './material/material.module';
 import { InputSearchComponent } from './components/dumbs/inputs/input-search/input-search.component';
 import { SideNavbarComponent } from './components/smarts/navbar/side-navbar/side-navbar.component';
 import { RouterModule } from '@angular/router';
+import { InputSelectComponent } from './components/dumbs/inputs/input-select/input-select.component';
 
 const COMPONENTS = [
   ButtonComponent,
@@ -22,10 +23,13 @@ const COMPONENTS = [
   MainButtonComponent,
   CardComponent,
   InputErrorMessageComponent,
+  InputSearchComponent,
+  SideNavbarComponent,
+  InputSelectComponent,
 ];
 
 @NgModule({
-  declarations: [...COMPONENTS, InputSearchComponent, SideNavbarComponent],
+  declarations: [...COMPONENTS],
   imports: [
     CommonModule,
     ReactiveFormsModule,
