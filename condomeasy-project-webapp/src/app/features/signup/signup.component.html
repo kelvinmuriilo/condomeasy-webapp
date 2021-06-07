@@ -10,6 +10,7 @@
           placeholder="Nome"
           [control]="signupForm.controls['firstName']"
           identifier="first-name-input-signup"
+          label="Nome"
         >
         </app-input-text>
 
@@ -37,6 +38,7 @@
       <div class="col-12 col-lg-6">
         <app-input-text
           placeholder="Sobrenome"
+          label="Sobrenome"
           [control]="signupForm.controls['lastName']"
           identifier="last-name-input-signup"
         >
@@ -66,6 +68,7 @@
       <div class="col-12 col-lg-3">
         <app-input-text
           placeholder="Bloco"
+          label="Bloco"
           [control]="signupForm.controls['apartamentBlock']"
           identifier="apartamentBlock-input-signup"
         >
@@ -84,6 +87,7 @@
       <div class="col-12 col-lg-3">
         <app-input-text
           placeholder="Número apto"
+          label="Número apto"
           [control]="signupForm.controls['apartmentNumber']"
           identifier="apartmentNumber-input-signup"
           mask="0*"
@@ -105,6 +109,7 @@
       <div class="col-12 col-lg-4">
         <app-input-text
           placeholder="Código do condomínio"
+          label="Código do condomínio"
           [control]="signupForm.controls['condominiumId']"
           identifier="condominiumId-input-signup"
           mask="0*"
@@ -126,6 +131,7 @@
       <div class="col-12 col-lg-4">
         <app-input-text
           placeholder="CPF"
+          label="CPF"
           [control]="signupForm.controls['cpf']"
           identifier="cpf-input-signup"
           mask="000.000.000-00"
@@ -156,6 +162,7 @@
       <div class="col-12 col-lg-4">
         <app-input-text
           placeholder="E-mail"
+          label="E-mail"
           [control]="signupForm.controls['email']"
           identifier="email-input-signup"
         >
@@ -185,6 +192,7 @@
       <div class="col-12 col-lg-4">
         <app-input-text
           placeholder="Nome de usuário"
+          label="Nome de usuário"
           [control]="signupForm.controls['username']"
           identifier="username-input-signup"
         >
@@ -214,6 +222,7 @@
       <div class="col-12 col-lg-4">
         <app-input-text
           placeholder="Senha"
+          label="Senha"
           [control]="signupForm.controls['password']"
           identifier="password-input-signup"
           type="password"
@@ -250,6 +259,7 @@
       <div class="col-12 col-lg-4">
         <app-input-text
           placeholder="Repita a senha"
+          label="Repita a senha"
           [control]="signupForm.controls['confirmPassword']"
           identifier="confirm-password-input-signup"
           type="password"
@@ -286,6 +296,7 @@
       <div class="col-12 col-lg-4">
         <app-input-text
           placeholder="Celular"
+          label="Celular"
           [control]="signupForm.controls['phone']"
           identifier="phone-input-signup"
           mask="(00) 0 0000-0000"
