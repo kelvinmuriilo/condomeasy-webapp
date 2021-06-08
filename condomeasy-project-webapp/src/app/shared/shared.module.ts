@@ -15,6 +15,7 @@ import { InputSearchComponent } from './components/dumbs/inputs/input-search/inp
 import { SideNavbarComponent } from './components/smarts/navbar/side-navbar/side-navbar.component';
 import { RouterModule } from '@angular/router';
 import { InputSelectComponent } from './components/dumbs/inputs/input-select/input-select.component';
+import { InputImageComponent } from './components/dumbs/inputs/input-image/input-image.component';
 
 const COMPONENTS = [
   ButtonComponent,
@@ -26,6 +27,7 @@ const COMPONENTS = [
   InputSearchComponent,
   SideNavbarComponent,
   InputSelectComponent,
+  InputImageComponent,
 ];
 
 @NgModule({

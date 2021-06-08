@@ -33,11 +33,7 @@ export class LoginComponent implements OnInit {
     let password = this.loginForm.value.password;
 
     if (this.loginForm.valid) {
-      const login: LoginRequestModel = {
-        username,
-        password,
-      };
-
+      let login: LoginRequestModel = this.loginForm.getRawValue();
       this.authService.authenticate(login).subscribe(
         () => {
           this.router.navigate(['/advertisements']);

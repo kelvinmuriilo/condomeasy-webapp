@@ -11,7 +11,7 @@ import { CategoryListResponseModel } from '../model/category-model';
 import { environment } from './../../../../environments/environment';
 
 const baseUrl = environment.baseUrl;
-
+const uploadImagesUrl = environment.uploadImagesUrl;
 @Injectable({
   providedIn: 'root',
 })
@@ -53,5 +53,11 @@ export class AdvertisementService {
       `${baseUrl}/advertisement/${id}`,
       updateAdvertisement
     );
+  }
+
+  uploadImages(images: File): Observable<any> {
+    let formData: FormData = new FormData();
+    formData.append('image', images);
+    return this.httpClient.post<any>(`${uploadImagesUrl}`, formData);
   }
 }

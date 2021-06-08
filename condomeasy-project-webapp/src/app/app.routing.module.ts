@@ -19,10 +19,10 @@ const routes: Routes = [
   },
   {
     path: 'advertisements',
-    canActivate: [AuthGuard],
+    /*  canActivate: [AuthGuard],
     data: {
       roles: [{ authority: UserRole.ADMIN }, { authority: UserRole.USER }],
-    },
+    }, */
     loadChildren: () =>
       import('./features/advertisement/module/advertisement.module').then(
         (m) => m.AdvertisementModule

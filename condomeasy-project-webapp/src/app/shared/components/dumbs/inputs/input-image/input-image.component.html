@@ -1,0 +1,11 @@
+<mat-label>{{ label }}</mat-label>
+<input
+  [placeholder]="placeholder"
+  [formControl]="control"
+  [name]="name"
+  [id]="identifier"
+  (change)="bindChange($event)"
+  type="file"
+  accept="image/*"
+  multiple
+/>

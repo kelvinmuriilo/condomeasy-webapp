@@ -32,4 +32,12 @@
     >
     </app-input-text>
   </div>
+
+  <div class="col-12">
+    <app-input-image
+      name="image"
+      [control]="advertisementForm.controls['image']"
+      (changeEmit)="inputImageOnChange($event.target?.files)"
+    ></app-input-image>
+  </div>
 </div>

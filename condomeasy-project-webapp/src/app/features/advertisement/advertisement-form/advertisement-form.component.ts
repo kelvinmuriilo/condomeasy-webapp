@@ -16,6 +16,8 @@ export class AdvertisementFormComponent implements OnInit, OnDestroy {
   advertisementForm: FormGroup;
   categories: Array<Option> = [];
   selectedCategory: number;
+  images: Array<File>;
+  urlSentImage: string;
 
   constructor(
     private advertisementService: AdvertisementService,
@@ -34,6 +36,25 @@ export class AdvertisementFormComponent implements OnInit, OnDestroy {
 
   isUpdate(): boolean {
     return false;
+  }
+
+  inputImageOnChange(images: File[]): void {
+    this.images = images;
+    console.log(images);
+    if (this.images) {
+      this.sendImages();
+    }
+  }
+
+  sendAvertisement(): void {}
+
+  sendImages(): void {
+    this.advertisementService
+      .uploadImages(this.images[0])
+      .subscribe((imagePath) => {
+        this.urlSentImage = imagePath;
+        console.log(this.urlSentImage);
+      });
   }
 
   private initViewUpdate(): void {
