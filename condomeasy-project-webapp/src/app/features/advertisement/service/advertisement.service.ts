@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {
@@ -11,7 +11,7 @@ import { CategoryListResponseModel } from '../model/category-model';
 import { environment } from './../../../../environments/environment';
 
 const baseUrl = environment.baseUrl;
-
+const uploadImagesUrl = environment.uploadImagesUrl;
 @Injectable({
   providedIn: 'root',
 })
@@ -53,5 +53,13 @@ export class AdvertisementService {
       `${baseUrl}/advertisement/${id}`,
       updateAdvertisement
     );
+  }
+
+  uploadImages(images: File): Observable<string> {
+    let formData: FormData = new FormData();
+    formData.append('image', images);
+    return this.httpClient.post(`${uploadImagesUrl}`, formData, {
+      responseType: 'text',
+    });
   }
 }

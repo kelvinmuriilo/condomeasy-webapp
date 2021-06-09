@@ -1,35 +1,76 @@
-<div class="col-12">
-  <h3>Criar novo anúncio</h3>
-  <div class="col-12 col-md-12 col-lg-6">
-    <app-input-text
-      [control]="advertisementForm.controls['name']"
-      placeholder="Título"
-      label="Título"
-      type="text"
-      identifier="advertisement-title-input-text"
-      errorMessage="Campo obrigatório"
-      appearance="outline"
-    >
-    </app-input-text>
-  </div>
+<div class="row">
+  <div class="col-12">
+    <h3>Criar novo anúncio</h3>
+    <div class="row">
+      <div class="col-12 col-lg-12">
+        <app-input-text
+          [control]="advertisementForm.controls['name']"
+          placeholder="Título"
+          label="Título"
+          type="text"
+          identifier="advertisement-title-input-text"
+          errorMessage="Campo obrigatório"
+          appearance="outline"
+        >
+        </app-input-text>
+      </div>
 
-  <div class="col-12 col-md-12 col-lg-4">
-    <app-input-select label="Categoria" [options]="categories">
-    </app-input-select>
-  </div>
+      <div class="col-12">
+        <app-input-text-area
+          [control]="advertisementForm.controls['description']"
+          placeholder="Descrição"
+          label="Descrição"
+          type="text"
+          identifier="advertisement-description-input-area"
+          errorMessage="Campo obrigatório"
+          appearance="outline"
+        >
+        </app-input-text-area>
+      </div>
 
-  <div class="col-12 col-md-6 col-lg-3">
-    <app-input-text
-      [control]="advertisementForm.controls['value']"
-      placeholder="Preço"
-      label="Preço"
-      type="text"
-      identifier="advertisement-price-input-text"
-      errorMessage="Campo obrigatório"
-      prefix="R$ "
-      thousandSeparator="."
-      mask="0*,00"
-    >
-    </app-input-text>
+      <div class="col-12 col-md-4 col-lg-6">
+        <app-input-select
+          label="Categoria"
+          [options]="categories"
+          (bindOption)="onSelectCategory($event)"
+        >
+        </app-input-select>
+      </div>
+
+      <div class="col-12 col-lg-6">
+        <app-input-text
+          [control]="advertisementForm.controls['value']"
+          placeholder="Preço"
+          label="Preço"
+          type="text"
+          identifier="advertisement-price-input-text"
+          errorMessage="Campo obrigatório"
+          prefix="R$ "
+          thousandSeparator="."
+          mask="0*,00"
+        >
+        </app-input-text>
+      </div>
+
+      <div class="col-12">
+        <app-input-image
+          name="image"
+          [control]="advertisementForm.controls['image']"
+          (changeEmit)="inputImageOnChange($event.target?.files)"
+        ></app-input-image>
+      </div>
+    </div>
+
+    <div class="row d-flex justify-content-center mt-4">
+      <div class="col-6">
+        <app-main-button
+          name="Cadastrar"
+          className="btn-primary btn-lg"
+          (onClick)="sendAdvertisement()"
+          identifier="create-advertisement-button"
+        >
+        </app-main-button>
+      </div>
+    </div>
   </div>
 </div>

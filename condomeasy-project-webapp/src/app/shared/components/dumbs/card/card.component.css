@@ -57,6 +57,10 @@
   }
 }
 
+.card-container {
+  cursor: pointer;
+}
+
 @media (min-width: 769px) and (max-width: 992px) {
   .announcement__title {
     font-size: 1.5em !important;

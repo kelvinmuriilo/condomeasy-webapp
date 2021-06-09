@@ -15,6 +15,8 @@ import { InputSearchComponent } from './components/dumbs/inputs/input-search/inp
 import { SideNavbarComponent } from './components/smarts/navbar/side-navbar/side-navbar.component';
 import { RouterModule } from '@angular/router';
 import { InputSelectComponent } from './components/dumbs/inputs/input-select/input-select.component';
+import { InputImageComponent } from './components/dumbs/inputs/input-image/input-image.component';
+import { InputTextAreaComponent } from './components/dumbs/inputs/input-text-area/input-text-area.component';
 
 const COMPONENTS = [
   ButtonComponent,
@@ -26,6 +28,8 @@ const COMPONENTS = [
   InputSearchComponent,
   SideNavbarComponent,
   InputSelectComponent,
+  InputImageComponent,
+  InputTextAreaComponent,
 ];
 
 @NgModule({
@@ -38,6 +42,6 @@ const COMPONENTS = [
     MaterialModule,
     RouterModule,
   ],
-  exports: [...COMPONENTS, MaterialModule],
+  exports: [...COMPONENTS, MaterialModule, NgxMaskModule],
 })
 export class SharedModule {}

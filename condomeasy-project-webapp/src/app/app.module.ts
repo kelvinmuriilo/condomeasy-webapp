@@ -22,6 +22,10 @@ import { AppRoutingModule } from './app.routing.module';
 import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
 
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { NgxMaskModule } from 'ngx-mask';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from 'src/environments/environment';
 
 registerLocaleData(localePt, 'pt');
 
@@ -38,6 +42,12 @@ registerLocaleData(localePt, 'pt');
     RouterModule.forRoot([]),
     AppRoutingModule,
     NgxSpinnerModule,
+    NgxMaskModule.forRoot(),
+    StoreModule.forRoot({}),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
   ],
   providers: [
     {

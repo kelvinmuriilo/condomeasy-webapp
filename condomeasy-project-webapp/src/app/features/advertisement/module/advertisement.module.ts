@@ -8,6 +8,8 @@ import { AdvertisementComponent } from '../advertisement.component';
 import { AdvertisementFilterComponent } from '../advertisement-filter/advertisement-filter.component';
 import { AdvertisementDetailsComponent } from '../advertisement-details/advertisement-details.component';
 import { AdvertisementFormComponent } from './../advertisement-form/advertisement-form.component';
+import { StoreModule } from '@ngrx/store';
+import { reducer } from '../state/reducer';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,11 @@ import { AdvertisementFormComponent } from './../advertisement-form/advertisemen
     AdvertisementDetailsComponent,
     AdvertisementFormComponent,
   ],
-  imports: [CommonModule, AdvertisementRoutingModule, SharedModule],
+  imports: [
+    CommonModule,
+    AdvertisementRoutingModule,
+    SharedModule,
+    StoreModule.forFeature('advertisements', reducer),
+  ],
 })
 export class AdvertisementModule {}

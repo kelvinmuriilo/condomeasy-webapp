@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Option } from './option.model';
 
 @Component({
@@ -11,7 +11,13 @@ export class InputSelectComponent implements OnInit {
   @Input() options: Option;
   @Input() appearance: string = 'outline';
 
+  @Output() bindOption: EventEmitter<Option> = new EventEmitter<Option>();
+
   constructor() {}
 
   ngOnInit(): void {}
+
+  bindValue(selectedOption: Option): void {
+    this.bindOption.emit(selectedOption);
+  }
 }

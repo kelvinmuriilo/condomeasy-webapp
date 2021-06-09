@@ -27,7 +27,7 @@ export class SideNavbarComponent implements OnInit {
   openDialogCreateAdvertisement(): void {
     this.matDialogRef.close();
     this.matDialog.open(AdvertisementFormComponent, {
-      width: '700px',
+      width: '500px',
     });
   }
 }

@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { TokenService } from 'src/app/core/token/token.service';
+import { UserService } from 'src/app/core/user/user.service';
+import { LOCALSTORAGE } from 'src/app/shared/constants';
 import { LoginRequestModel } from './login.model';
 
 @Component({
@@ -21,7 +23,7 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private toastrService: ToastrService,
-    private tokenService: TokenService
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -33,13 +35,10 @@ export class LoginComponent implements OnInit {
     let password = this.loginForm.value.password;
 
     if (this.loginForm.valid) {
-      const login: LoginRequestModel = {
-        username,
-        password,
-      };
-
+      let login: LoginRequestModel = this.loginForm.getRawValue();
       this.authService.authenticate(login).subscribe(
         () => {
+          this.loadUser();
           this.router.navigate(['/advertisements']);
         },
         (error) => {
@@ -66,6 +65,17 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.formBuilder.group({
       username: this.formBuilder.control('', Validators.required),
       password: this.formBuilder.control('', Validators.required),
+    });
+  }
+
+  private loadUser(): void {
+    const username = window.localStorage.getItem(LOCALSTORAGE.USER_NAME);
+    const sub = this.userService.getUserFromApi(username).subscribe((user) => {
+      console.log(user);
+      window.localStorage.setItem(
+        LOCALSTORAGE.USER_ID,
+        user.data.id.toString()
+      );
     });
   }
 }
