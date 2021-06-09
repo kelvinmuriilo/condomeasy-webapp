@@ -10,6 +10,7 @@ export class MainButtonComponent implements OnInit {
   @Input() name: string;
   @Input() identifier: string;
   @Input() type: string;
+  @Input() isDisable: boolean;
 
   @Output() onClick: EventEmitter<any> = new EventEmitter<any>();
   constructor() {}

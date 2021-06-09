@@ -1,18 +1,27 @@
 import { Injectable } from '@angular/core';
 import { TokenService } from '../token/token.service';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import jwt_decode from 'jwt-decode';
-import { UserToken } from './user.model';
+import { User, UserResponseModel, UserToken } from './user.model';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { LOCALSTORAGE } from 'src/app/shared/constants';
+
+const baseUrl = environment.baseUrl;
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
   private username: string;
-  private userSubject = new BehaviorSubject<any>(null);
+  private userSubject = new BehaviorSubject<User>(null);
 
-  constructor(private tokenService: TokenService, private router: Router) {}
+  constructor(
+    private tokenService: TokenService,
+    private router: Router,
+    private httpClient: HttpClient
+  ) {}
 
   setToken(token: string) {
     this.tokenService.setToken(token);
@@ -49,9 +58,16 @@ export class UserService {
     });
   }
 
+  getUserFromApi(username: string): Observable<UserResponseModel> {
+    return this.httpClient.get<UserResponseModel>(
+      `${baseUrl}/user/username/${username}`
+    );
+  }
+
   private decodeAndNotify() {
     const token = this.tokenService.getToken();
     const user = jwt_decode(token) as UserToken;
+    window.localStorage.setItem(LOCALSTORAGE.USER_NAME, user.sub);
     this.tokenService.setAuthorities(JSON.stringify(user.profiles));
   }
 }

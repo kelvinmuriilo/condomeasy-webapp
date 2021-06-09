@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {
@@ -55,9 +55,11 @@ export class AdvertisementService {
     );
   }
 
-  uploadImages(images: File): Observable<any> {
+  uploadImages(images: File): Observable<string> {
     let formData: FormData = new FormData();
     formData.append('image', images);
-    return this.httpClient.post<any>(`${uploadImagesUrl}`, formData);
+    return this.httpClient.post(`${uploadImagesUrl}`, formData, {
+      responseType: 'text',
+    });
   }
 }

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { UserService } from 'src/app/core/user/user.service';
+import { LOCALSTORAGE } from 'src/app/shared/constants';
 import { AdvertisementFilterComponent } from './advertisement-filter/advertisement-filter.component';
 import { Advertisement } from './model/advertisement-model';
 import { AdvertisementService } from './service/advertisement.service';

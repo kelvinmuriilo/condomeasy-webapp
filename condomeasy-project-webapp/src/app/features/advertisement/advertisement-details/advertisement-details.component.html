@@ -29,7 +29,7 @@
           <img
             class="img-fluid"
             style="border-radius: 10px"
-            src="https://i0.wp.com/blog.bcredi.com.br/wp-content/uploads/2017/11/bcredi_projeto_casa_22_nov.png?resize=800%2C560&ssl=1"
+            [src]="advertisement?.imageUrl"
             alt=""
           />
         </div>
@@ -59,12 +59,17 @@
             >
               <div class="d-flex flex-column">
                 <span class="user-label">Nome</span>
-                <span class="user-name">Micheal Jordan</span>
+                <span class="user-name"
+                  >{{ advertisement?.user.name }}
+                  {{ advertisement?.user.surname }}</span
+                >
               </div>
 
               <div class="d-flex flex-column">
                 <span class="user-label">Telefone</span>
-                <span>(81) 9 9999-9999</span>
+                <span>{{
+                  advertisement?.user.telephone | mask: "(00) 0 0000-0000"
+                }}</span>
               </div>
             </div>
           </div>

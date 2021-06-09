@@ -1,8 +1,16 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
+import { User } from 'src/app/core/user/user.model';
+import { UserService } from 'src/app/core/user/user.service';
 import { Option } from 'src/app/shared/components/dumbs/inputs/input-select/option.model';
-import { Advertisement } from '../model/advertisement-model';
+import { LOCALSTORAGE } from 'src/app/shared/constants';
+import {
+  Advertisement,
+  CreateAdvertisement,
+} from '../model/advertisement-model';
+import { Category } from '../model/category-model';
 import { AdvertisementService } from '../service/advertisement.service';
 
 @Component({
@@ -15,13 +23,16 @@ export class AdvertisementFormComponent implements OnInit, OnDestroy {
   advertisement: Advertisement;
   advertisementForm: FormGroup;
   categories: Array<Option> = [];
-  selectedCategory: number;
+  selectedCategory: Category;
   images: Array<File>;
   urlSentImage: string;
+  user: User;
 
   constructor(
     private advertisementService: AdvertisementService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private userService: UserService,
+    private toastrService: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -40,21 +51,39 @@ export class AdvertisementFormComponent implements OnInit, OnDestroy {
 
   inputImageOnChange(images: File[]): void {
     this.images = images;
-    console.log(images);
     if (this.images) {
       this.sendImages();
     }
   }
 
-  sendAvertisement(): void {}
+  sendAdvertisement(): void {
+    const createAdvertisement: CreateAdvertisement = {
+      name: this.advertisementForm.value.name,
+      category: this.selectedCategory,
+      description: this.advertisementForm.value.description,
+      value: parseFloat(this.advertisementForm.value.value),
+      imageUrl: this.urlSentImage,
+      user: { id: parseInt(window.localStorage.getItem(LOCALSTORAGE.USER_ID)) },
+    };
+
+    const sub = this.advertisementService
+      .createAdvertisement(createAdvertisement)
+      .subscribe((response) =>
+        this.toastrService.success('Anúncio cadastrado com sucesso!')
+      );
+    this.subs.push(sub);
+  }
 
   sendImages(): void {
     this.advertisementService
       .uploadImages(this.images[0])
       .subscribe((imagePath) => {
         this.urlSentImage = imagePath;
-        console.log(this.urlSentImage);
       });
+  }
+
+  onSelectCategory(category: Category): void {
+    this.selectedCategory = category;
   }
 
   private initViewUpdate(): void {

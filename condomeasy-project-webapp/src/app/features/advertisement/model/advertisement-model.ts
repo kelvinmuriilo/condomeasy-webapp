@@ -1,4 +1,5 @@
 import { ResponseModel } from 'src/app/core/model/response.model';
+import { User } from 'src/app/core/user/user.model';
 import { Category } from './category-model';
 
 export interface Advertisement {
@@ -7,7 +8,8 @@ export interface Advertisement {
   description: string;
   value: number;
   category: Category;
-  userId: number;
+  user: User;
+  imageUrl: string;
 }
 
 export interface AdvertisementListResponseModel extends ResponseModel {
@@ -23,7 +25,8 @@ export interface CreateAdvertisement {
   description: string;
   value: number;
   category: Category;
-  userId: number;
+  user: any;
+  imageUrl: string;
 }
 
 export interface UpdateAdvertisement {
@@ -31,5 +34,6 @@ export interface UpdateAdvertisement {
   description: string;
   value: number;
   category: Category;
-  userId: number;
+  user: User;
+  imageUrl: string;
 }

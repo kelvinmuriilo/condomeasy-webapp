@@ -1,0 +1,13 @@
+<mat-form-field [appearance]="appearance" [style.width.%]="100">
+  <mat-label>{{ label }}</mat-label>
+  <textarea
+    matInput
+    [placeholder]="placeholder"
+    [formControl]="control"
+    (keyup)="onKeyUp($event.target.value)"
+    [id]="identifier"
+    [type]="type"
+  ></textarea>
+  <!--   <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+   --></mat-form-field
+>
