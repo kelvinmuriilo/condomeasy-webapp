@@ -27,7 +27,14 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { LOCALSTORAGE } from './shared/constants';
+
 registerLocaleData(localePt, 'pt');
+
+export function tokenGetter() {
+  return localStorage.getItem(LOCALSTORAGE.TOKEN_KEY);
+}
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, HomeComponent],
@@ -61,6 +68,8 @@ registerLocaleData(localePt, 'pt');
       multi: true,
     },
     { provide: LOCALE_ID, useValue: 'pt-BR' },
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService,
   ],
   bootstrap: [AppComponent],
 })
