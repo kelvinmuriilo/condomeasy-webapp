@@ -20,7 +20,6 @@ export class InputImageComponent implements OnInit {
   ngOnInit(): void {}
 
   bindChange(files: File[]): void {
-    console.log(files);
     if (files) {
       this.changeEmit.emit(files);
     }

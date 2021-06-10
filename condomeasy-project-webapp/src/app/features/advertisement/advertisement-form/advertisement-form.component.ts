@@ -75,7 +75,6 @@ export class AdvertisementFormComponent implements OnInit, OnDestroy {
           this.toastrService.success('Anúncio cadastrado com sucesso!');
         },
         (error) => {
-          console.log(error.error);
           error?.error?.errors?.forEach((element) => {
             this.toastrService.error(element);
           });

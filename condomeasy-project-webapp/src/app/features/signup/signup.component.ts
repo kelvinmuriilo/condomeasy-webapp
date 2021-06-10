@@ -31,7 +31,6 @@ export class SignupComponent implements OnInit {
   }
 
   send(): void {
-    console.log(this.signupForm);
     if (this.signupForm.valid) {
       this.signupService.send(this.getSignupModel()).subscribe(
         () => {
