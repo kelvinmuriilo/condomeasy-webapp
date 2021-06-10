@@ -2,5 +2,5 @@ export const environment = {
   production: true,
   baseUrl:
     'https://condomeasy-bff-service-uat.herokuapp.com/condomeasy-backend-api/v1',
-  uploadImagesUrl: 'https://161.97.107.158:7777',
+  uploadImagesUrl: 'http://161.97.107.158:7777',
 };
