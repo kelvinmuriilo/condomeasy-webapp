@@ -71,7 +71,6 @@ export class LoginComponent implements OnInit {
   private loadUser(): void {
     const username = window.localStorage.getItem(LOCALSTORAGE.USER_NAME);
     const sub = this.userService.getUserFromApi(username).subscribe((user) => {
-      console.log(user);
       window.localStorage.setItem(
         LOCALSTORAGE.USER_ID,
         user.data.id.toString()
