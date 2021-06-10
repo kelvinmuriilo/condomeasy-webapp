@@ -155,6 +155,15 @@
           "
         >
         </app-input-error-message>
+
+        <app-input-error-message
+          message="Informe um CPF válido"
+          [isVisible]="
+            signupForm.controls['cpf']?.errors?.cpfNotValid &&
+            signupForm.controls['cpf']?.touched
+          "
+        >
+        </app-input-error-message>
       </div>
     </div>
 
@@ -255,7 +264,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <!--   <div class="row">
       <div class="col-12 col-lg-4">
         <app-input-text
           placeholder="Repita a senha"
@@ -290,7 +299,7 @@
         >
         </app-input-error-message>
       </div>
-    </div>
+    </div> -->
 
     <div class="row">
       <div class="col-12 col-lg-4">
