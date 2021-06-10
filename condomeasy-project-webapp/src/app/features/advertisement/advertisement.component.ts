@@ -41,7 +41,7 @@ export class AdvertisementComponent implements OnInit {
   private loadAdvertisement(): void {
     this.advertisementService.getAdvertisements().subscribe(
       (ads) => {
-        this.advertisements = ads.data;
+        this.advertisements = ads.data.sort((a, b) => b.id - a.id);
       },
       (err) => {
         this.toastrService.error(err.message);
