@@ -20,16 +20,6 @@ body {
   background-color: rgb(5, 99, 103);
 }
 
-a {
-  outline: none;
-  text-decoration: none;
-  color: #212121;
-}
-
-a:hover {
-  color: #212121;
-}
-
 /*Side navbar config*/
 
 @media (max-width: 576px) {

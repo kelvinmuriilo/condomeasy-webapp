@@ -2,6 +2,16 @@ ul {
   list-style: none;
 }
 
+a {
+  outline: none;
+  text-decoration: none;
+  color: #212121;
+}
+
+a:hover {
+  color: #212121;
+}
+
 .fas {
   margin-right: 20px;
 }

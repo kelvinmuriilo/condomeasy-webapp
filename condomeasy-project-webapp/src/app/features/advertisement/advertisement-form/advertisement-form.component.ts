@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { User } from 'src/app/core/user/user.model';
@@ -31,8 +32,8 @@ export class AdvertisementFormComponent implements OnInit, OnDestroy {
   constructor(
     private advertisementService: AdvertisementService,
     private formBuilder: FormBuilder,
-    private userService: UserService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private matDialogRef: MatDialogRef<AdvertisementFormComponent>
   ) {}
 
   ngOnInit(): void {
@@ -68,8 +69,17 @@ export class AdvertisementFormComponent implements OnInit, OnDestroy {
 
     const sub = this.advertisementService
       .createAdvertisement(createAdvertisement)
-      .subscribe((response) =>
-        this.toastrService.success('Anúncio cadastrado com sucesso!')
+      .subscribe(
+        () => {
+          this.closeDialog();
+          this.toastrService.success('Anúncio cadastrado com sucesso!');
+        },
+        (error) => {
+          console.log(error.error);
+          error?.error?.errors?.forEach((element) => {
+            this.toastrService.error(element);
+          });
+        }
       );
     this.subs.push(sub);
   }
@@ -84,6 +94,10 @@ export class AdvertisementFormComponent implements OnInit, OnDestroy {
 
   onSelectCategory(category: Category): void {
     this.selectedCategory = category;
+  }
+
+  closeDialog(): void {
+    this.matDialogRef.close();
   }
 
   private initViewUpdate(): void {

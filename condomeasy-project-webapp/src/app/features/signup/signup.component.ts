@@ -31,6 +31,7 @@ export class SignupComponent implements OnInit {
   }
 
   send(): void {
+    console.log(this.signupForm);
     if (this.signupForm.valid) {
       this.signupService.send(this.getSignupModel()).subscribe(
         () => {
@@ -70,6 +71,7 @@ export class SignupComponent implements OnInit {
           Validators.required,
           Validators.minLength(11),
           Validators.maxLength(11),
+          FormValidations.isValidCpf(),
         ]),
         username: this.formbuilder.control('', [
           Validators.required,
@@ -79,10 +81,10 @@ export class SignupComponent implements OnInit {
           Validators.required,
           Validators.minLength(8),
         ]),
-        confirmPassword: this.formbuilder.control('', [
+        /* confirmPassword: this.formbuilder.control('', [
           Validators.required,
           Validators.minLength(8),
-        ]),
+        ]), */
         apartmentNumber: this.formbuilder.control('', [
           Validators.required,
           Validators.min(1),
@@ -97,10 +99,10 @@ export class SignupComponent implements OnInit {
           Validators.maxLength(11),
         ]),
         condominiumId: this.formbuilder.control('', [Validators.required]),
-      },
-      {
-        validators: FormValidations.passwordMatchValidator,
       }
+      /*  {
+        validators: FormValidations.passwordMatchValidator,
+      } */
     );
   }
 
