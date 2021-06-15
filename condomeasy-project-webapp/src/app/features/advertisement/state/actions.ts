@@ -14,12 +14,16 @@ const loadAllAdvertisementsSuccess = createAction(
 
 const loadAllAdvertisementsError = createAction(
   ACTION.LOAD_ALL_ADVERTISEMENT_ERROR,
-  props<{ errors: Array<any> }>()
+  props<{ errors: any }>()
 );
 
 const createAdvertisement = createAction(
   ACTION.CREATE_ADVERTISEMENT,
-  props<{ createAdvertisement: CreateAdvertisement }>()
+  props<{
+    createAdvertisement: CreateAdvertisement;
+    successFunction: any;
+    errorFunction: any;
+  }>()
 );
 
 const createAdvertisementSuccess = createAction(

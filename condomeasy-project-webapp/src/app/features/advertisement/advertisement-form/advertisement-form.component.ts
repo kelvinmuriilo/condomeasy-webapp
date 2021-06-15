@@ -1,18 +1,20 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Store } from '@ngrx/store';
 import { ToastrService } from 'ngx-toastr';
-import { Subscription } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { User } from 'src/app/core/user/user.model';
-import { UserService } from 'src/app/core/user/user.service';
 import { Option } from 'src/app/shared/components/dumbs/inputs/input-select/option.model';
 import { LOCALSTORAGE } from 'src/app/shared/constants';
+import { AppState } from 'src/app/state/app.state.model';
 import {
   Advertisement,
   CreateAdvertisement,
 } from '../model/advertisement-model';
 import { Category } from '../model/category-model';
 import { AdvertisementService } from '../service/advertisement.service';
+import { AdvertisementActions } from '../state/actions';
 
 @Component({
   selector: 'app-advertisement-form',
@@ -20,6 +22,8 @@ import { AdvertisementService } from '../service/advertisement.service';
   styleUrls: ['./advertisement-form.component.css'],
 })
 export class AdvertisementFormComponent implements OnInit, OnDestroy {
+  loadAdvertisements: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+
   subs: Array<Subscription> = [];
   advertisement: Advertisement;
   advertisementForm: FormGroup;
@@ -33,7 +37,8 @@ export class AdvertisementFormComponent implements OnInit, OnDestroy {
     private advertisementService: AdvertisementService,
     private formBuilder: FormBuilder,
     private toastrService: ToastrService,
-    private matDialogRef: MatDialogRef<AdvertisementFormComponent>
+    private matDialogRef: MatDialogRef<AdvertisementFormComponent>,
+    private store: Store<AppState>
   ) {}
 
   ngOnInit(): void {
@@ -67,20 +72,20 @@ export class AdvertisementFormComponent implements OnInit, OnDestroy {
       user: { id: parseInt(window.localStorage.getItem(LOCALSTORAGE.USER_ID)) },
     };
 
-    const sub = this.advertisementService
-      .createAdvertisement(createAdvertisement)
-      .subscribe(
-        () => {
-          this.closeDialog();
+    console.log(createAdvertisement);
+
+    this.store.dispatch(
+      AdvertisementActions.createAdvertisement({
+        createAdvertisement,
+        successFunction: () => {
           this.toastrService.success('Anúncio cadastrado com sucesso!');
+          this.matDialogRef.close();
         },
-        (error) => {
-          error?.error?.errors?.forEach((element) => {
-            this.toastrService.error(element);
-          });
-        }
-      );
-    this.subs.push(sub);
+        errorFunction: () => {
+          this.toastrService.error('Ocorreu um erro ao cadastrar o anúncio.');
+        },
+      })
+    );
   }
 
   sendImages(): void {

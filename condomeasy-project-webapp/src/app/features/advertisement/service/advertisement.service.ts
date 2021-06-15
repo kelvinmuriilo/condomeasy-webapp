@@ -38,8 +38,8 @@ export class AdvertisementService {
 
   createAdvertisement(
     createAdvertisement: CreateAdvertisement
-  ): Observable<string> {
-    return this.httpClient.post<string>(
+  ): Observable<AdvertisementResponseModel> {
+    return this.httpClient.post<AdvertisementResponseModel>(
       `${baseUrl}/advertisement`,
       createAdvertisement
     );
