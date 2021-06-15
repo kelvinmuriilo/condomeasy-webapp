@@ -1,12 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { select, Store } from '@ngrx/store';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/core/user/user.service';
 import { LOCALSTORAGE } from 'src/app/shared/constants';
+import { AppState } from 'src/app/state/app.state.model';
 import { AdvertisementFilterComponent } from './advertisement-filter/advertisement-filter.component';
 import { Advertisement } from './model/advertisement-model';
 import { AdvertisementService } from './service/advertisement.service';
+import { AdvertisementActions } from './state/actions';
+import { selectAdvertisements } from './state/selectors';
 
 @Component({
   selector: 'app-advertisement',
@@ -20,10 +24,12 @@ export class AdvertisementComponent implements OnInit {
     private advertisementService: AdvertisementService,
     private toastrService: ToastrService,
     private matDialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private store: Store<AppState>
   ) {}
 
   ngOnInit(): void {
+    this.listenSelectorAdvertisement();
     this.loadAdvertisement();
   }
 
@@ -39,13 +45,13 @@ export class AdvertisementComponent implements OnInit {
   }
 
   private loadAdvertisement(): void {
-    this.advertisementService.getAdvertisements().subscribe(
-      (ads) => {
-        this.advertisements = ads.data.sort((a, b) => b.id - a.id);
-      },
-      (err) => {
-        this.toastrService.error(err.message);
-      }
-    );
+    this.store.dispatch(AdvertisementActions.loadAllAdvertisements());
+  }
+
+  private listenSelectorAdvertisement(): void {
+    this.store.pipe(select(selectAdvertisements)).subscribe((ads) => {
+      const adv = JSON.parse(JSON.stringify(ads));
+      this.advertisements = adv.sort((a, b) => b.id - a.id);
+    });
   }
 }

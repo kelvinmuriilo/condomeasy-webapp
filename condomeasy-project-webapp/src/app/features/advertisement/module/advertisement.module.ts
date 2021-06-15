@@ -10,6 +10,8 @@ import { AdvertisementDetailsComponent } from '../advertisement-details/advertis
 import { AdvertisementFormComponent } from './../advertisement-form/advertisement-form.component';
 import { StoreModule } from '@ngrx/store';
 import { reducer } from '../state/reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { AdvertisementEffects } from '../state/effects';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { reducer } from '../state/reducer';
     AdvertisementRoutingModule,
     SharedModule,
     StoreModule.forFeature('advertisements', reducer),
+    EffectsModule.forFeature([AdvertisementEffects]),
   ],
 })
 export class AdvertisementModule {}

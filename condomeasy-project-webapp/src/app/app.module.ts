@@ -29,6 +29,7 @@ import { environment } from 'src/environments/environment';
 
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { LOCALSTORAGE } from './shared/constants';
+import { EffectsModule } from '@ngrx/effects';
 
 registerLocaleData(localePt, 'pt');
 
@@ -55,6 +56,7 @@ export function tokenGetter() {
       maxAge: 25,
       logOnly: environment.production,
     }),
+    EffectsModule.forRoot(),
   ],
   providers: [
     {

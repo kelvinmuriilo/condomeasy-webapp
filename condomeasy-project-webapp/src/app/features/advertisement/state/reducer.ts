@@ -10,11 +10,11 @@ const advertisementReducer = createReducer(
   initialState,
   on(AdvertisementActions.loadAllAdvertisementsSuccess, (state, action) => ({
     ...state,
-    state: action.advertisements,
+    advertisements: action.advertisements,
   })),
   on(AdvertisementActions.createAdvertisementSuccess, (state, action) => ({
     ...state,
-    state: [...state.advertisements, action.advertisement],
+    advertisements: [...state.advertisements, action.advertisement],
   }))
 );
 

@@ -1,8 +1,14 @@
-/* import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { EMPTY } from 'rxjs';
-import { map, mergeMap, catchError, switchMap, exhaustMap } from 'rxjs/operators';
+import { EMPTY, Observable, of } from 'rxjs';
+import {
+  map,
+  mergeMap,
+  catchError,
+  switchMap,
+  exhaustMap,
+} from 'rxjs/operators';
 import { ACTION } from 'src/app/shared/constants';
 import { AppState } from 'src/app/state/app.state.model';
 
@@ -11,22 +17,43 @@ import { AdvertisementActions } from './actions';
 
 @Injectable()
 export class AdvertisementEffects {
-  loadAdvertisements$ = createEffect(() =>
-    this.actions$.pipe(
+  loadAdvertisements$ = createEffect(() => {
+    return this.actions$.pipe(
       ofType(ACTION.LOAD_ALL_ADVERSTISEMENTS),
-      exhaustMap((action) =>
+      switchMap(() =>
         this.advertisementService.getAdvertisements().pipe(
-          map((ads) => this.store.dispatch(AdvertisementActions.loadAllAdvertisementsSuccess({advertisements: ads.data})))
+          map((ads) =>
+            AdvertisementActions.loadAllAdvertisementsSuccess({
+              advertisements: ads.data,
+            })
           ),
-          catchError(error => of(AuthApiActions.loginFailure({ error })))
+          catchError(() => EMPTY)
         )
       )
-  );
+    );
+  });
+
+  createAdivertisement$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(AdvertisementActions.createAdvertisement),
+      switchMap((action) =>
+        this.advertisementService
+          .createAdvertisement(action.createAdvertisement)
+          .pipe(
+            map((ads) => {
+              action.successFunction();
+              return AdvertisementActions.createAdvertisementSuccess({
+                advertisement: ads.data,
+              });
+            }),
+            catchError(() => of(action.errorFunction()))
+          )
+      )
+    );
+  });
 
   constructor(
     private actions$: Actions,
-    private store: Store<AppState>,
     private advertisementService: AdvertisementService
   ) {}
 }
- */

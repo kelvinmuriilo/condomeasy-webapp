@@ -1,8 +1,9 @@
-import { createSelector } from '@ngrx/store';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { AppState } from 'src/app/state/app.state.model';
 import { AdvertisementState } from './advertisement.state.model';
 
-export const selectFeature = (state: AppState) => state.advertisements;
+export const selectFeature =
+  createFeatureSelector<AdvertisementState>('advertisements');
 
 export const selectAdvertisements = createSelector(
   selectFeature,
