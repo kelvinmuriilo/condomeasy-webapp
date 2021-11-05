@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   baseUrl:
     'https://condomeasy-bff-service-uat.herokuapp.com/condomeasy-backend-api/v1',
-  uploadImagesUrl: 'https://dev.katianeespacodabeleza.com.br/arquivos/save.php',
+  uploadImagesUrl: 'https://financas.yagobrandao.dev.br/upload',
 };
 
 /*
