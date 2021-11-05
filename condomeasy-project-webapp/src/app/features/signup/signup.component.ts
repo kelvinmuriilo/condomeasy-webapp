@@ -38,7 +38,9 @@ export class SignupComponent implements OnInit {
           this.router.navigate(['/login']);
         },
         (error) => {
-          this.toastService.error(error.error.message);
+          error?.error?.errors.forEach((element) => {
+            this.toastService.error(element);
+          });
         },
         () => {}
       );
