@@ -1,10 +1,16 @@
+.card-body {
+  box-shadow: 200px rgba(0, 0, 0, 0.5) !important;
+}
+
 .logo {
   width: 350px;
   height: 400px;
+  object-fit: cover;
 }
 
 .button-area {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -16,4 +22,13 @@
 
 .register-link:hover {
   text-decoration: underline;
+}
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary:focus {
+  background-color: rgb(5, 99, 103) !important;
+  color: #fff !important;
 }

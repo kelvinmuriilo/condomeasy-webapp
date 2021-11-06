@@ -1,0 +1,22 @@
+<div class="col-12 card-container" (click)="bindClick()">
+  <div class="card d-flex flex-row p-2 p-md-3">
+    <div class="col-6">
+      <img
+        class="img-fluid"
+        style="border-radius: 5px"
+        *ngIf="showImage()"
+        class="announcement__image"
+        [src]="imgPath"
+        alt=""
+      />
+    </div>
+    <div class="col-6 announcement__infos d-flex flex-column">
+      <span class="announcement__title">{{ title }}</span>
+      <span class="announcement__category mt-1"> {{ category }}</span>
+      <span class="announcement__description mt-2">{{ description }}</span>
+      <span class="announcement__price mt-1">
+        {{ price | currency: "BRL" }}
+      </span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,349 @@
+<div class="d-flex justify-content-center">
+  <div class="col-10 col-lg-6 mt-5">
+    <i routerLink="/login" class="fas fa-arrow-left"></i>
+
+    <h2 class="mt-2">Crie uma conta e comece a usar o Condomeasy</h2>
+
+    <div class="row px-0">
+      <div class="col-12 col-lg-6">
+        <app-input-text
+          placeholder="Nome"
+          [control]="signupForm.controls['firstName']"
+          identifier="first-name-input-signup"
+          label="Nome"
+        >
+        </app-input-text>
+
+        <app-input-error-message
+          message="Campo obrigatório"
+          [isVisible]="
+            signupForm.controls['firstName']?.errors?.required &&
+            signupForm.controls['firstName']?.touched
+          "
+        >
+        </app-input-error-message>
+
+        <app-input-error-message
+          message="Insira pelo menos 3 letras"
+          [isVisible]="
+            signupForm.controls['firstName']?.errors?.minlength &&
+            signupForm.controls['firstName']?.touched
+          "
+        >
+        </app-input-error-message>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-lg-6">
+        <app-input-text
+          placeholder="Sobrenome"
+          label="Sobrenome"
+          [control]="signupForm.controls['lastName']"
+          identifier="last-name-input-signup"
+        >
+        </app-input-text>
+
+        <app-input-error-message
+          message="Campo obrigatório"
+          [isVisible]="
+            signupForm.controls['lastName']?.errors?.required &&
+            signupForm.controls['lastName']?.touched
+          "
+        >
+        </app-input-error-message>
+
+        <app-input-error-message
+          message="Insira pelo menos 3 letras"
+          [isVisible]="
+            signupForm.controls['lastName']?.errors?.minlength &&
+            signupForm.controls['lastName']?.touched
+          "
+        >
+        </app-input-error-message>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-lg-3">
+        <app-input-text
+          placeholder="Bloco"
+          label="Bloco"
+          [control]="signupForm.controls['apartamentBlock']"
+          identifier="apartamentBlock-input-signup"
+        >
+        </app-input-text>
+
+        <app-input-error-message
+          message="Campo obrigatório"
+          [isVisible]="
+            signupForm.controls['apartamentBlock']?.errors?.required &&
+            signupForm.controls['apartamentBlock']?.touched
+          "
+        >
+        </app-input-error-message>
+      </div>
+
+      <div class="col-12 col-lg-3">
+        <app-input-text
+          placeholder="Número apto"
+          label="Número apto"
+          [control]="signupForm.controls['apartmentNumber']"
+          identifier="apartmentNumber-input-signup"
+          mask="0*"
+        >
+        </app-input-text>
+
+        <app-input-error-message
+          message="Campo obrigatório"
+          [isVisible]="
+            signupForm.controls['apartmentNumber']?.errors?.required &&
+            signupForm.controls['apartmentNumber']?.touched
+          "
+        >
+        </app-input-error-message>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-lg-4">
+        <app-input-text
+          placeholder="Código do condomínio"
+          label="Código do condomínio"
+          [control]="signupForm.controls['condominiumId']"
+          identifier="condominiumId-input-signup"
+          mask="0*"
+        >
+        </app-input-text>
+
+        <app-input-error-message
+          message="Campo obrigatório"
+          [isVisible]="
+            signupForm.controls['condominiumId']?.errors?.required &&
+            signupForm.controls['condominiumId']?.touched
+          "
+        >
+        </app-input-error-message>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-lg-4">
+        <app-input-text
+          placeholder="CPF"
+          label="CPF"
+          [control]="signupForm.controls['cpf']"
+          identifier="cpf-input-signup"
+          mask="000.000.000-00"
+        >
+        </app-input-text>
+
+        <app-input-error-message
+          message="Campo obrigatório"
+          [isVisible]="
+            signupForm.controls['cpf']?.errors?.required &&
+            signupForm.controls['cpf']?.touched
+          "
+        >
+        </app-input-error-message>
+
+        <app-input-error-message
+          message="O CPF precisa ter 11 números"
+          [isVisible]="
+            signupForm.controls['cpf']?.errors?.minlength &&
+            signupForm.controls['cpf']?.touched
+          "
+        >
+        </app-input-error-message>
+
+        <app-input-error-message
+          message="Informe um CPF válido"
+          [isVisible]="
+            signupForm.controls['cpf']?.errors?.cpfNotValid &&
+            signupForm.controls['cpf']?.touched
+          "
+        >
+        </app-input-error-message>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-lg-4">
+        <app-input-text
+          placeholder="E-mail"
+          label="E-mail"
+          [control]="signupForm.controls['email']"
+          identifier="email-input-signup"
+        >
+        </app-input-text>
+
+        <app-input-error-message
+          message="Campo obrigatório"
+          [isVisible]="
+            signupForm.controls['email']?.errors?.required &&
+            signupForm.controls['email']?.touched
+          "
+        >
+        </app-input-error-message>
+
+        <app-input-error-message
+          message="Insira um e-mail válido"
+          [isVisible]="
+            signupForm.controls['email']?.errors?.email &&
+            signupForm.controls['email']?.touched
+          "
+        >
+        </app-input-error-message>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-lg-4">
+        <app-input-text
+          placeholder="Nome de usuário"
+          label="Nome de usuário"
+          [control]="signupForm.controls['username']"
+          identifier="username-input-signup"
+        >
+        </app-input-text>
+
+        <app-input-error-message
+          message="Campo obrigatório"
+          [isVisible]="
+            signupForm.controls['username']?.errors?.required &&
+            signupForm.controls['username']?.touched
+          "
+        >
+        </app-input-error-message>
+
+        <app-input-error-message
+          message="Insira pelo menos 3 dígitos"
+          [isVisible]="
+            signupForm.controls['username']?.errors?.minlength &&
+            signupForm.controls['username']?.touched
+          "
+        >
+        </app-input-error-message>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-lg-4">
+        <app-input-text
+          placeholder="Senha"
+          label="Senha"
+          [control]="signupForm.controls['password']"
+          identifier="password-input-signup"
+          type="password"
+        >
+        </app-input-text>
+
+        <app-input-error-message
+          message="Campo obrigatório"
+          [isVisible]="
+            signupForm.controls['password']?.errors?.required &&
+            signupForm.controls['password']?.touched
+          "
+        >
+        </app-input-error-message>
+
+        <app-input-error-message
+          message="As senhas não são iguais"
+          [isVisible]="signupForm?.errors?.passwordMatch"
+        >
+        </app-input-error-message>
+
+        <app-input-error-message
+          message="A senha deve ter pelo menos 8 caracteres"
+          [isVisible]="
+            signupForm.controls['password']?.errors?.minlength &&
+            signupForm.controls['password']?.touched
+          "
+        >
+        </app-input-error-message>
+      </div>
+    </div>
+
+    <!--   <div class="row">
+      <div class="col-12 col-lg-4">
+        <app-input-text
+          placeholder="Repita a senha"
+          label="Repita a senha"
+          [control]="signupForm.controls['confirmPassword']"
+          identifier="confirm-password-input-signup"
+          type="password"
+        >
+        </app-input-text>
+
+        <app-input-error-message
+          message="Campo obrigatório"
+          [isVisible]="
+            signupForm.controls['confirmPassword']?.errors?.required &&
+            signupForm.controls['confirmPassword']?.touched
+          "
+        >
+        </app-input-error-message>
+
+        <app-input-error-message
+          message="As senhas não são iguais"
+          [isVisible]="signupForm?.errors?.passwordMatch"
+        >
+        </app-input-error-message>
+
+        <app-input-error-message
+          message="A senha deve ter pelo menos 8 caracteres"
+          [isVisible]="
+            signupForm.controls['confirmPassword']?.errors?.minlength &&
+            signupForm.controls['confirmPassword']?.touched
+          "
+        >
+        </app-input-error-message>
+      </div>
+    </div> -->
+
+    <div class="row">
+      <div class="col-12 col-lg-4">
+        <app-input-text
+          placeholder="Celular"
+          label="Celular"
+          [control]="signupForm.controls['phone']"
+          identifier="phone-input-signup"
+          mask="(00) 0 0000-0000"
+        >
+        </app-input-text>
+
+        <app-input-error-message
+          message="Campo obrigatório"
+          [isVisible]="
+            signupForm.controls['phone']?.errors?.required &&
+            signupForm.controls['phone']?.touched
+          "
+        >
+        </app-input-error-message>
+
+        <app-input-error-message
+          message="O telefone informado precisa ter 11 números"
+          [isVisible]="
+            signupForm.controls['phone']?.errors?.minlength &&
+            signupForm.controls['phone']?.touched
+          "
+        >
+        </app-input-error-message>
+      </div>
+    </div>
+
+    <div class="button-area">
+      <div class="row">
+        <div class="col-12 col-lg-2 mb-5">
+          <app-main-button
+            className="btn-primary btn-lg"
+            name="Enviar"
+            identifier="send-create-button-signup"
+            (onClick)="send()"
+          >
+          </app-main-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

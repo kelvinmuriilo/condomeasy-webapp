@@ -1,40 +1,68 @@
-<div class="row">
-    <div class="col-12 d-flex flex-column align-items-center">
+<div class="px-2 px-md-0" (keyup.enter)="login()">
+  <div class="col-12 px-0 d-flex flex-column align-items-center">
+    <img
+      class="logo"
+      src="../../../assets/logo-cut-bg.png"
+      alt="logo-condomeasy"
+    />
 
-        <img class="logo"  src="../../../assets/logo-condomeasy.png" alt="logo-condomeasy">
-
-        <div class=" col-12 col-md-6 col-xl-2">
-            <app-input-text
-                [control]="loginForm.controls['username']"
-                placeholder="Nome de usuário ou e-mail"
-                identifier="username-input-text"
-                errorMessage="Campo obrigatório">
-            </app-input-text>
-        </div>
-
-        <div class=" col-12 col-md-6 col-xl-2">
-            <app-input-text
-                [control]="loginForm.controls['password']"
-                placeholder="Senha"
-                type="password"
-                identifier="password-input-text"
-                errorMessage="Campo obrigatório">
-            </app-input-text>
-        </div>
-
-        <div>
-            <span>Não tem conta? <a class="register-link">Registre-se aqui</a>.</span>
-        </div>
+    <div class="col-12 col-md-6 col-xl-2">
+      <app-input-text
+        [control]="loginForm.controls['username']"
+        placeholder="Nome de usuário ou e-mail"
+        identifier="username-input-text"
+        errorMessage="Campo obrigatório"
+        label="Nome de usuário ou e-mail"
+      >
+      </app-input-text>
+      <app-input-error-message
+        message="Campo obrigatório"
+        [isVisible]="
+          loginForm.controls['username']?.errors?.required &&
+          loginForm.controls['username']?.touched
+        "
+      >
+      </app-input-error-message>
     </div>
 
-    <div class="col-12 button-area mt-3">
-        <div class="col-12 col-md-1">
-            <app-button
-                name="Entrar"
-                className="btn-primary btn-lg"
-                (onClick)="login()"
-                identifier="login-button">
-            </app-button>
-        </div>
+    <div class="col-12 col-md-6 col-xl-2">
+      <app-input-text
+        [control]="loginForm.controls['password']"
+        placeholder="Senha"
+        label="Senha"
+        type="password"
+        identifier="password-input-text"
+        errorMessage="Campo obrigatório"
+      >
+      </app-input-text>
+      <app-input-error-message
+        message="Campo obrigatório"
+        [isVisible]="
+          loginForm.controls['password']?.errors?.required &&
+          loginForm.controls['password']?.touched
+        "
+      >
+      </app-input-error-message>
     </div>
+  </div>
+
+  <div class="col-12 button-area mt-3">
+    <div class="col-12 col-md-1">
+      <app-main-button
+        name="Entrar"
+        className="btn-primary btn-lg"
+        (onClick)="login()"
+        identifier="login-button"
+      >
+      </app-main-button>
+    </div>
+
+    <div class="mt-4">
+      <span
+        >Não tem conta?
+        <a routerLink="/signup" class="register-link">Registre-se aqui</a
+        >.</span
+      >
+    </div>
+  </div>
 </div>

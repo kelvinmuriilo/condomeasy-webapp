@@ -1,1 +1,148 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: rgb(237, 242, 249);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.main-green-color {
+  color: rgb(5, 99, 103);
+}
+
+.main-green-bg {
+  background-color: rgb(5, 99, 103);
+}
+
+/*Side navbar config*/
+
+@media (max-width: 576px) {
+  .navbar-dialog-config {
+    width: 70%;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 720px) {
+  .navbar-dialog-config {
+    width: 40%;
+  }
+}
+
+@media (min-width: 720px) and (max-width: 960px) {
+  .navbar-dialog-config {
+    width: 30%;
+  }
+}
+
+@media (min-width: 961px) {
+  .navbar-dialog-config {
+    width: 15%;
+  }
+}
+
+/*Material animation dialog*/
+
+@keyframes slide-left {
+  100% {
+    left: 0;
+  }
+}
+
+@keyframes slide {
+  100% {
+    left: 0;
+  }
+}
+
+.dialog-side-panel {
+  position: fixed !important;
+  bottom: 0;
+  top: 0;
+  left: -100vw;
+  height: 100%;
+  animation: slide 0.1s forwards;
+  animation-delay: 0.1s;
+}
+
+/* Mat Form Field */
+/* Border */
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: rgb(5, 99, 103);
+}
+/* Font color */
+input.mat-input-element {
+  color: rgb(5, 99, 103);
+}
+
+/* mat-icon-stepper selected color change 
+ */
+.mat-step-header .mat-step-icon-selected,
+.mat-step-header .mat-step-icon-state-done,
+.mat-step-header .mat-step-icon-state-edit {
+  background-color: rgb(5, 99, 103) !important;
+}
+
+/* input outline color 
+ */
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: rgb(5, 99, 103) !important;
+  opacity: 1 !important;
+}
+
+/* mat-input focused color
+ */
+.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  color: rgb(5, 99, 103) !important;
+}
+
+/* mat-input error outline color
+ */
+.mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid
+  .mat-form-field-outline-thick {
+  color: red !important;
+  opacity: 0.8 !important;
+}
+
+/* mat-input carent color  */
+.mat-input-element {
+  caret-color: rgb(5, 99, 103) !important;
+}
+
+/* mat-input error carent color  */
+.mat-form-field-invalid .mat-input-element,
+.mat-warn .mat-input-element {
+  caret-color: rgb(5, 99, 103) !important;
+}
+
+/* mat-label normal state style  */
+.mat-form-field-label {
+  color: rgb(5, 99, 103);
+}
+
+/* mat-label focused style 
+ */
+.mat-form-field.mat-focused .mat-form-field-label {
+  color: rgb(5, 99, 103) !important;
+}
+
+/* mat-label error style
+ */
+.mat-form-field.mat-form-field-invalid .mat-form-field-label {
+  color: red !important;
+}
+
+.mat-form-field-ripple {
+  background-color: rgb(5, 99, 103) !important;
+}
+
+.mat-form-field-underline,
+.mat-form-field-underline.mat-focused {
+  /*   background-color: rgb(5, 99, 103) !important;
+ */
+}
