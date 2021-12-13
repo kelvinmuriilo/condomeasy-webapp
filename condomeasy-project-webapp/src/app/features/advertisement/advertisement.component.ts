@@ -43,7 +43,6 @@ export class AdvertisementComponent implements OnInit {
   }
 
   redirectToAdvetisementDetails(id: number) {
-    console.log(id)
     this.router.navigate(['advertisements/details', id]);
   }
 

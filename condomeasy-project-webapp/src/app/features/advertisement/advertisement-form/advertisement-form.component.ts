@@ -65,9 +65,6 @@ export class AdvertisementFormComponent implements OnInit, OnDestroy {
 
   returnIsACombinar(value) {
     this.isACombinar = value;
-    console.log(this.isACombinar.toString())
-    console.log(this.advertisementForm.value.value)
-    console.log(this.advertisementForm.value)
 
     this.advertisementForm = this.formBuilder.group({
       name: this.advertisementForm.value.name,
