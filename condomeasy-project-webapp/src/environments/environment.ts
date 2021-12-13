@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   baseUrl:
-    'http://localhost:8080/condomeasy-backend-api/v1',
+    'https://condomeasy-bff-service-uat.herokuapp.com/condomeasy-backend-api/v1',
   uploadImagesUrl: 'https://financas.yagobrandao.dev.br/upload',
 };
 
