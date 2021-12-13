@@ -1,0 +1,15 @@
+.collapse {
+  border: 1px solid red;
+}
+
+.logo {
+  width: 60px;
+  height: auto;
+  z-index: 99;
+  filter: invert(50%) sepia(10%) saturate(3207%) hue-rotate(130deg)
+    brightness(95%) contrast(80%);
+}
+
+.input-search {
+  z-index: 100;
+}

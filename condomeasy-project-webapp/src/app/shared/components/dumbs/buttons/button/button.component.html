@@ -1,14 +1,13 @@
 <div class="d-grid gap-2">
+  <button
+    [type]="type"
+    class="btn"
+    [class]="className"
+    (click)="clickEvent()"
+    [id]="identifier"
+  >
+    <i *ngIf="fontIcon" class="{{ fontIcon }}"></i>
 
-    <button 
-        type="button"
-        class="btn" 
-        [class]="className"
-        (click)="clickEvent()"
-        [id]="identifier">
-        
-        {{ name }}
-    </button>
-
+    {{ name }}
+  </button>
 </div>
-

@@ -1,0 +1,52 @@
+ul {
+  list-style: none;
+}
+
+a {
+  outline: none;
+  text-decoration: none;
+  color: #212121;
+}
+
+a:hover {
+  color: #212121;
+}
+
+.fas {
+  margin-right: 20px;
+}
+
+.sidenav-container {
+  height: 100%;
+}
+
+.nav-item {
+  height: 60px;
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 1.3em;
+}
+
+.animated-bottom {
+  position: relative;
+}
+
+.animated-bottom::after {
+  content: "";
+  position: absolute;
+  border-bottom: 3px solid rgb(5, 99, 103);
+  bottom: 0;
+  left: 0;
+  right: 100%;
+  transition: all 500ms;
+}
+
+.animated-bottom:hover::after {
+  right: 0;
+}
+
+.copy {
+  font-size: 0.8em;
+}

@@ -1,0 +1,59 @@
+<div
+  class="
+    col-12
+    d-flex
+    flex-column flex-lg-row
+    justify-content-center
+    px-2 px-lg-0
+  "
+>
+  <div class="col-12 col-lg-2 d-flex flex-column">
+    <div
+      class="
+        d-lg-none d-flex
+        justify-content-center
+        align-items-center
+        mt-3
+        mb-3
+      "
+      style="height: 5vh"
+    >
+      <app-button
+        *ngIf="advertisements?.length"
+        name="Filtros"
+        fontIcon="fas fa-filter"
+        className=" btn-outline-info"
+        (onClick)="openFiltersDialog()"
+      ></app-button>
+    </div>
+
+    <div class="d-none d-lg-block px-3 mr-1" *ngIf="advertisements?.length">
+      <app-advertisement-filter></app-advertisement-filter>
+    </div>
+  </div>
+
+  <div
+    class="
+      container-advertisement
+      col-12 col-lg-5
+      d-flex
+      flex-column
+      align-items-center
+      pt-md-3
+    "
+  >
+    <div
+      class="col-12 col-md-12 mb-2"
+      *ngFor="let advertisement of advertisements"
+    >
+      <app-card
+        (onClick)="redirectToAdvetisementDetails(advertisement.id)"
+        [title]="advertisement.name"
+        [price]="advertisement.value"
+        [description]="advertisement.description"
+        [category]="advertisement?.category.name"
+        [imgPath]="advertisement.imageUrl"
+      ></app-card>
+    </div>
+  </div>
+</div>

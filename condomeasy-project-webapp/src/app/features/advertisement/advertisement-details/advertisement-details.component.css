@@ -1,0 +1,60 @@
+.title {
+  font-size: 1.6em;
+  font-family: Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol";
+  font-weight: 500;
+  line-height: 1.2;
+  color: #344050;
+}
+
+.description {
+  font-weight: 400;
+  line-height: 1.5;
+  color: #5e6e82;
+}
+
+.category {
+  color: #2c7be5;
+  font-size: 0.833rem;
+}
+
+.price {
+  color: #f5803e !important;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.image-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .image {
+    width: 90%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+  .image {
+    width: 80%;
+  }
+}
+
+@media (min-width: 993px) {
+  .image {
+    width: 50%;
+  }
+}
+
+.user-title {
+  color: #344050;
+  font-size: 0.8rem;
+  color: #5e6e82;
+}
+
+.user-label {
+  font-size: 0.7rem;
+  color: #5e6e82;
+}

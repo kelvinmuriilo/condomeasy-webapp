@@ -1,0 +1,14 @@
+<div class="">
+  <input
+    *ngIf="show"
+    class="input-search"
+    [class.is-invalid]="isInvalid()"
+    [id]="identifier"
+    [type]="type"
+    [formControl]="control"
+    [placeholder]="placeholder"
+    (keyup)="onKeyUp($event.target.value)"
+  />
+
+  <i class="fa fa-search" (click)="showInput()"></i>
+</div>

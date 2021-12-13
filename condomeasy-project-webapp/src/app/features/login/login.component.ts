@@ -3,6 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/core/auth/auth.service';
+import { TokenService } from 'src/app/core/token/token.service';
+import { UserService } from 'src/app/core/user/user.service';
+import { LOCALSTORAGE } from 'src/app/shared/constants';
+import { LoginRequestModel } from './login.model';
 
 @Component({
   selector: 'app-login',
@@ -11,12 +15,15 @@ import { AuthService } from 'src/app/core/auth/auth.service';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  defaultUsername: string = 'admin';
+  defaultPassword: string = 'admin';
 
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -28,12 +35,14 @@ export class LoginComponent implements OnInit {
     let password = this.loginForm.value.password;
 
     if (this.loginForm.valid) {
-      this.authService.authenticate(username, password).subscribe(
+      let login: LoginRequestModel = this.loginForm.getRawValue();
+      this.authService.authenticate(login).subscribe(
         () => {
-          this.router.navigate(['/home']);
+          this.loadUser();
+          this.router.navigate(['/advertisements']);
         },
-        () => {
-          this.toastrService.error('Falha ao realizar login');
+        (error) => {
+          this.toastrService.error(error.error.message);
         }
       );
     } else {
@@ -56,6 +65,16 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.formBuilder.group({
       username: this.formBuilder.control('', Validators.required),
       password: this.formBuilder.control('', Validators.required),
+    });
+  }
+
+  private loadUser(): void {
+    const username = window.localStorage.getItem(LOCALSTORAGE.USER_NAME);
+    const sub = this.userService.getUserFromApi(username).subscribe((user) => {
+      window.localStorage.setItem(
+        LOCALSTORAGE.USER_ID,
+        user.data.id.toString()
+      );
     });
   }
 }

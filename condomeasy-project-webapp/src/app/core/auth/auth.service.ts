@@ -4,6 +4,11 @@ import { Observable } from 'rxjs';
 import { environment } from './../../../environments/environment';
 import { tap } from 'rxjs/operators';
 import { TokenService } from '../token/token.service';
+import {
+  LoginRequestModel,
+  LoginResponseModel,
+} from 'src/app/features/login/login.model';
+import { UserService } from '../user/user.service';
 
 const baseUrl = environment.baseUrl;
 
@@ -13,20 +18,20 @@ const baseUrl = environment.baseUrl;
 export class AuthService {
   constructor(
     private httpClient: HttpClient,
-    private tokenService: TokenService
+    private userService: UserService
   ) {}
 
-  authenticate(username: string, password: string): Observable<any> {
+  authenticate(login: LoginRequestModel): Observable<LoginResponseModel> {
     return this.httpClient
-      .post<any>(`${baseUrl}/auth`, { username, password })
+      .post<LoginResponseModel>(`${baseUrl}/authenticate`, login)
       .pipe(
         tap((res) => {
-          this.tokenService.setToken(res.token);
+          this.userService.setToken(res.access_token);
         })
       );
   }
 
   isAuthenticated(): boolean {
-    return this.tokenService.hasToken();
+    return this.userService.isLogged();
   }
 }

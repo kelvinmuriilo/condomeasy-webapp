@@ -1,0 +1,17 @@
+<mat-form-field [appearance]="appearance" [style.width.%]="100">
+  <mat-label>{{ label }}</mat-label>
+  <input
+    matInput
+    [class.is-invalid]="isInvalid()"
+    [placeholder]="placeholder"
+    [formControl]="control"
+    (keyup)="onKeyUp($event.target.value)"
+    [mask]="mask"
+    [suffix]="suffix"
+    [prefix]="prefix"
+    [thousandSeparator]="thousandSeparator"
+    [id]="identifier"
+    [type]="type"
+    autocomplete="off"
+  />
+</mat-form-field>
