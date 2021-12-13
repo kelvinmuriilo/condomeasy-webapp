@@ -36,6 +36,12 @@ export class AdvertisementService {
     );
   }
 
+  getAdvertisementByCategoryId(id: number): Observable<AdvertisementListResponseModel> {
+    return this.httpClient.get<AdvertisementListResponseModel>(
+      `${baseUrl}/advertisement/byCategoria/${id}`
+    );
+  }
+
   createAdvertisement(
     createAdvertisement: CreateAdvertisement
   ): Observable<AdvertisementResponseModel> {

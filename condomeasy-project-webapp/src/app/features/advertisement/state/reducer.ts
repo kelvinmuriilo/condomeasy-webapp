@@ -12,6 +12,10 @@ const advertisementReducer = createReducer(
     ...state,
     advertisements: action.advertisements,
   })),
+  on(AdvertisementActions.loadAllAdvertisementsByCategoryIdSuccess, (state, action) => ({
+    ...state,
+    advertisements: action.advertisements,
+  })),
   on(AdvertisementActions.createAdvertisementSuccess, (state, action) => ({
     ...state,
     advertisements: [...state.advertisements, action.advertisement],

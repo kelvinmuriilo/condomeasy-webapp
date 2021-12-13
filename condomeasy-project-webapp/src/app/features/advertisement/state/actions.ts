@@ -6,6 +6,22 @@ import {
 } from '../model/advertisement-model';
 
 const loadAllAdvertisements = createAction(ACTION.LOAD_ALL_ADVERSTISEMENTS);
+const loadAllAdvertisementsByCategoryId = createAction(
+  ACTION.LOAD_ALL_ADVERSTISEMENTS_BY_CATEGORY,
+  props<{
+    id: number 
+  }>()
+  );
+
+const loadAllAdvertisementsByCategoryIdSuccess = createAction(
+  ACTION.LOAD_ALL_ADVERSTISEMENTS_BY_CATEGORY_SUCCESS,
+  props<{ advertisements: Array<Advertisement> }>()
+);
+
+const loadAllAdvertisementsByCategoryIdError = createAction(
+  ACTION.LOAD_ALL_ADVERSTISEMENTS_BY_CATEGORY_ERROR,
+  props<{ errors: any }>()
+);
 
 const loadAllAdvertisementsSuccess = createAction(
   ACTION.LOAD_ALL_ADVERTISEMENTS_SUCCESS,
@@ -37,6 +53,9 @@ const createAdvertisementError = createAction(
 
 export const AdvertisementActions = {
   loadAllAdvertisements,
+  loadAllAdvertisementsByCategoryId,
+  loadAllAdvertisementsByCategoryIdSuccess,
+  loadAllAdvertisementsByCategoryIdError,
   loadAllAdvertisementsSuccess,
   loadAllAdvertisementsError,
   createAdvertisement,

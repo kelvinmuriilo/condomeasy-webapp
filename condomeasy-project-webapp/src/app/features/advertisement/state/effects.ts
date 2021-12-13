@@ -52,6 +52,23 @@ export class AdvertisementEffects {
     );
   });
 
+  loadAllAdvertisementsByCategoryId$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(AdvertisementActions.loadAllAdvertisementsByCategoryId),
+      switchMap((action) =>
+        this.advertisementService
+          .getAdvertisementByCategoryId(action.id)
+          .pipe(
+            map((ads) => {
+              return AdvertisementActions.loadAllAdvertisementsByCategoryIdSuccess({
+                advertisements: ads.data,
+              });
+            })
+          )
+      )
+    );
+  });
+
   constructor(
     private actions$: Actions,
     private advertisementService: AdvertisementService

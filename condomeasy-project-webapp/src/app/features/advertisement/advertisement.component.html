@@ -49,7 +49,7 @@
       <app-card
         (onClick)="redirectToAdvetisementDetails(advertisement.id)"
         [title]="advertisement.name"
-        [price]="advertisement.value"
+        [price]="advertisement.value > 0 || advertisement.value === null ? advertisement.value : 'A combinar'"
         [description]="advertisement.description"
         [category]="advertisement?.category.name"
         [imgPath]="advertisement.imageUrl"

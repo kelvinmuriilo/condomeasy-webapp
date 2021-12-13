@@ -14,6 +14,7 @@
           identifier="advertisement-title-input-text"
           errorMessage="Campo obrigatório"
           appearance="outline"
+          readonly="false"
         >
         </app-input-text>
       </div>
@@ -47,12 +48,15 @@
           label="Preço"
           type="text"
           identifier="advertisement-price-input-text"
-          errorMessage="Campo obrigatório"
-          prefix="R$ "
+          prefix="{{ isACombinar ? 'A combinar' : 'R$' }} "
           thousandSeparator="."
           mask="0*,00"
+          readonly="{{isACombinar}}"
         >
         </app-input-text>
+        <div class="col-12">
+          <input type="checkbox" (change)="returnIsACombinar(!isACombinar)"> A combinar
+        </div>
       </div>
 
       <div class="col-12">
