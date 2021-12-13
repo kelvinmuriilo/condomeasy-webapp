@@ -1,12 +1,12 @@
 <div class="col-12 d-md-none flex-column" *ngIf="categories?.length">
   <div class="d-md-flex justify-content-center">
-    <h3>Filtros</h3>
   </div>
 
   <h3>Categorias</h3>
   <div class="d-flex flex-wrap">
     <div *ngFor="let category of categories" class="px-1 py-1">
-      <app-button [name]="category.name" className="btn-outline-info">
+      <app-button [name]="category.name" className="btn-outline-info"
+      (onClick)="filter(category.id)">
       </app-button>
     </div>
   </div>

@@ -35,7 +35,9 @@ export class AdvertisementDetailsComponent implements OnInit, OnDestroy {
     const sub = this.advertisementService
       .getAdvertisementById(id)
       .subscribe((ads) => {
+        console.log(ads.data)
         this.advertisement = ads.data;
+        console.log(this.advertisement)
       });
 
     this.subs.push(subRoute);

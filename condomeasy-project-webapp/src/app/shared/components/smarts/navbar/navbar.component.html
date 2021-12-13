@@ -6,17 +6,11 @@
   </div>
 
   <div class="col-4 d-flex justify-content-center">
-    <a [routerLink]="['/advertisements']">
+    <a [routerLink]="['/advertisements']" (click)="reloadAdvertisement()">
       <img class="logo" src="./../../../../../assets/logo-sem-nome-bg.png" />
     </a>
   </div>
 
   <div class="col-4 d-flex justify-content-end">
-    <app-input-search
-      class="input-search"
-      [control]="navbarForm.controls['search']"
-      placeholder="Pesquisar"
-    >
-    </app-input-search>
   </div>
 </mat-toolbar>

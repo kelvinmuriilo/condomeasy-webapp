@@ -11,6 +11,7 @@ import { Advertisement } from './model/advertisement-model';
 import { AdvertisementService } from './service/advertisement.service';
 import { AdvertisementActions } from './state/actions';
 import { selectAdvertisements } from './state/selectors';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-advertisement',
@@ -25,7 +26,8 @@ export class AdvertisementComponent implements OnInit {
     private toastrService: ToastrService,
     private matDialog: MatDialog,
     private router: Router,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -41,6 +43,7 @@ export class AdvertisementComponent implements OnInit {
   }
 
   redirectToAdvetisementDetails(id: number) {
+    console.log(id)
     this.router.navigate(['advertisements/details', id]);
   }
 

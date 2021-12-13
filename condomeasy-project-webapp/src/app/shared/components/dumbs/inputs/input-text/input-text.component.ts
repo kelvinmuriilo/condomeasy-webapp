@@ -20,6 +20,7 @@ export class InputTextComponent implements OnInit {
   @Input() appearance: string = 'outline';
   @Input() suffix: string = '';
   @Input() prefix: string = '';
+  @Input() readonly: boolean;
 
   @Output() changeValue: EventEmitter<string> = new EventEmitter<string>();
 

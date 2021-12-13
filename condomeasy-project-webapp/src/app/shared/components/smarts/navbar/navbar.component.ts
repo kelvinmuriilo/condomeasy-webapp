@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { UserService } from 'src/app/core/user/user.service';
 import { SideNavbarComponent } from './side-navbar/side-navbar.component';
+import { select, Store } from '@ngrx/store';
+import { AppState } from 'src/app/state/app.state.model';
+import { AdvertisementActions } from '../../../../features/advertisement/state/actions';
 
 @Component({
   selector: 'app-navbar',
@@ -15,7 +18,8 @@ export class NavbarComponent implements OnInit {
   constructor(
     private userService: UserService,
     private formBuilder: FormBuilder,
-    private matDialog: MatDialog
+    private matDialog: MatDialog,
+    private store: Store<AppState>
   ) {}
 
   ngOnInit(): void {
@@ -24,6 +28,10 @@ export class NavbarComponent implements OnInit {
 
   logout(): void {
     this.userService.logout();
+  }
+
+  reloadAdvertisement() {
+    this.store.dispatch(AdvertisementActions.loadAllAdvertisements());
   }
 
   openSideNavbar(): void {

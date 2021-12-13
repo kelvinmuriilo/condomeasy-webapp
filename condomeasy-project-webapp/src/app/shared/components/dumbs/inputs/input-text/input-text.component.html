@@ -2,7 +2,6 @@
   <mat-label>{{ label }}</mat-label>
   <input
     matInput
-    [class.is-invalid]="isInvalid()"
     [placeholder]="placeholder"
     [formControl]="control"
     (keyup)="onKeyUp($event.target.value)"
@@ -13,5 +12,6 @@
     [id]="identifier"
     [type]="type"
     autocomplete="off"
+    [readonly]="readonly"
   />
 </mat-form-field>

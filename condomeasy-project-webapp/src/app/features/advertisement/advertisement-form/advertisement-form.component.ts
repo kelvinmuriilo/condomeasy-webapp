@@ -23,6 +23,7 @@ import { AdvertisementActions } from '../state/actions';
 })
 export class AdvertisementFormComponent implements OnInit, OnDestroy {
   loadAdvertisements: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+  isACombinar: boolean = false;
 
   subs: Array<Subscription> = [];
   advertisement: Advertisement;
@@ -62,6 +63,23 @@ export class AdvertisementFormComponent implements OnInit, OnDestroy {
     }
   }
 
+  returnIsACombinar(value) {
+    this.isACombinar = value;
+    console.log(this.isACombinar.toString())
+    console.log(this.advertisementForm.value.value)
+    console.log(this.advertisementForm.value)
+
+    this.advertisementForm = this.formBuilder.group({
+      name: this.advertisementForm.value.name,
+      description: this.advertisementForm.value.description,
+      value: '',
+      image: this.urlSentImage
+    });
+    //document.getElementById('advertisement-price-input-text')[0].readOnly = true;
+    //document.getElementById('advertisement-price-input-text')[0].setAttribute('readonly', this.isACombinar);
+    return this.isACombinar;
+  }
+
   sendAdvertisement(): void {
     const createAdvertisement: CreateAdvertisement = {
       name: this.advertisementForm.value.name,
@@ -71,8 +89,6 @@ export class AdvertisementFormComponent implements OnInit, OnDestroy {
       imageUrl: this.urlSentImage,
       user: { id: parseInt(window.localStorage.getItem(LOCALSTORAGE.USER_ID)) },
     };
-
-    console.log(createAdvertisement);
 
     this.store.dispatch(
       AdvertisementActions.createAdvertisement({
@@ -140,7 +156,7 @@ export class AdvertisementFormComponent implements OnInit, OnDestroy {
     this.advertisementForm = this.formBuilder.group({
       name: this.formBuilder.control('', [Validators.required]),
       description: this.formBuilder.control('', [Validators.required]),
-      value: this.formBuilder.control('', [Validators.required]),
+      value: this.formBuilder.control('', []),
       image: this.formBuilder.control('', [Validators.required]),
     });
   }

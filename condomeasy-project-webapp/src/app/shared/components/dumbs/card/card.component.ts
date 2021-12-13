@@ -25,6 +25,10 @@ export class CardComponent implements OnInit {
     return this.imgPath !== undefined;
   }
 
+  isACombinar(): boolean {
+    return this.price === null || this.price < 1;
+  }
+
   bindClick(): void {
     this.onClick.emit();
   }
